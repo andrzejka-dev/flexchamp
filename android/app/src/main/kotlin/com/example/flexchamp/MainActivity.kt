@@ -1,4 +1,4 @@
-package com.example.flexchamp
+package com.andrzejkadev.flexchamp
 
 import io.flutter.embedding.android.FlutterActivity
 
