@@ -1,1 +1,53 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"flexchamp88","appId":"1:1084867825624:android:a6822c238b9654f3b4acad","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"flexchamp88","appId":"1:1084867825624:ios:fd0c237d7dfcfd35b4acad","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"flexchamp88","appId":"1:1084867825624:ios:fd0c237d7dfcfd35b4acad","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"flexchamp88","configurations":{"android":"1:1084867825624:android:a6822c238b9654f3b4acad","ios":"1:1084867825624:ios:fd0c237d7dfcfd35b4acad","macos":"1:1084867825624:ios:fd0c237d7dfcfd35b4acad","web":"1:1084867825624:web:fb9f307ebde840fbb4acad"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "flexchamp88",
+          "appId": "1:1084867825624:android:a6822c238b9654f3b4acad",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "flexchamp88",
+          "appId": "1:1084867825624:ios:fd0c237d7dfcfd35b4acad",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "flexchamp88",
+          "appId": "1:1084867825624:ios:fd0c237d7dfcfd35b4acad",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "flexchamp88",
+          "configurations": {
+            "android": "1:1084867825624:android:a6822c238b9654f3b4acad",
+            "ios": "1:1084867825624:ios:fd0c237d7dfcfd35b4acad",
+            "macos": "1:1084867825624:ios:fd0c237d7dfcfd35b4acad",
+            "web": "1:1084867825624:web:fb9f307ebde840fbb4acad"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ]
+    }
+  ]
+}
