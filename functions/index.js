@@ -16,3 +16,16 @@ exports.helloWorld = onRequest((request, response) => {
   logger.info("Hello logs!", {structuredData: true});
   response.send("Hello from Firebase!");
 });
+
+
+admin.initializeApp();
+
+exports.createUserRecord = admin.auth.user().onCreate((user) => {
+    console.log('user created', user.email, user.uid);
+    return admin.firestore().collection('users').doc(user.uid).set({email: user.email, create_at: admin.firestore.FieldValue.serverTimestamp()});
+});
+
+exports.deleteUserRecord = admin.auth.user().onDelete((user) => {
+    console.log('user deleted', user.email, user.uid);
+    return admin.firestore().collection('users').doc(user.uid).delete();
+});
