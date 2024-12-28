@@ -18,22 +18,22 @@ jobs:
           channel: 'stable'
           
 
-      -run: flutter --version
+      - run: flutter --version
 
-      -name: Generate Firebase Options
-       run: echo '${{ secrets.FIREBASE_OPTIONS }}' | base64 --decode > lib/firebase_options.dart
+      - name: Generate Firebase Options
+        run: echo '${{ secrets.FIREBASE_OPTIONS }}' | base64 --decode > lib/firebase_options.dart
 
 
-      -name: Decoded firebase_options.dart! Here is the directory after.
+      - name: Decoded firebase_options.dart! Here is the directory after.
        run: ls lib
 
-      -name: Get pub dependencies
-       run: flutter pub get
+      - name: Get pub dependencies
+        run: flutter pub get
 
-      -name: Build Web release
-       run: flutter build web --release --target lib/main.dart
+      - name: Build Web release
+        run: flutter build web --release --target lib/main.dart
 
-      uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
          repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLEXCHAMP88 }}'
