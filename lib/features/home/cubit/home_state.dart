@@ -1,6 +1,14 @@
 part of 'home_cubit.dart';
 
 @immutable
-class HomeState {}
+class HomeState {
+  final List<QueryDocumentSnapshot<Map<String, dynamic>>> user;
+  final bool isLoading;
+  final String errorMessage;
 
-final class HomeInitial extends HomeState {}
+  const HomeState({
+    required this.user,
+    required this.isLoading,
+    required this.errorMessage,
+  });
+}
