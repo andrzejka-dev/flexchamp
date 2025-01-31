@@ -1,12 +1,12 @@
-part of 'home_cubit.dart';
+part of 'root_cubit.dart';
 
 @immutable
-class HomeState {
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> user;
+class RootState {
+  final User? user;
   final bool isLoading;
   final String errorMessage;
 
-  const HomeState({
+  const RootState({
     required this.user,
     required this.isLoading,
     required this.errorMessage,
