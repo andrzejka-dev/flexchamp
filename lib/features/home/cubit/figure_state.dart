@@ -1,45 +1,43 @@
 import 'package:flexchamp/domain/models/figure_model.dart';
-import 'package:equatable/equatable.dart'; 
+
+class FigureState {
+  const FigureState({
+    this.figure = const [],
+    this.loadingErrorOccured = false,
+    this.removingErrorOccured = false,
+  });
+
+  final List<FigureModel> figure;
+  final bool loadingErrorOccured;
+  final bool removingErrorOccured;
+}
 
 
-// class HomeState {
-//   final List<FigureModel> figure;
-//   final bool isLoading;
-//   final String? errorMessage;
+// abstract class FigureState extends Equatable {
+//   const FigureState();
 
-//   const HomeState({
-//     this.figure = const [],
-//     this.isLoading = false,
-//     this.errorMessage,
-//   });
+//   @override
+//   List<Object> get props => [];
 // }
 
+// class FigureInitial extends FigureState {}
 
-abstract class FigureState extends Equatable {
-  const FigureState();
+// class FigureLoading extends FigureState {}
 
-  @override
-  List<Object> get props => [];
-}
+// class FigureLoaded extends FigureState {
+//   final List<FigureModel>figure;
 
-class FigureInitial extends FigureState {}
+//   const FigureLoaded(this.figure);
 
-class FigureLoading extends FigureState {}
+//   @override
+//   List<Object> get props => [figure];
+// }
 
-class FigureLoaded extends FigureState {
-  final List<FigureModel>figure;
+// class FigureError extends FigureState {
+//   final String message;
 
-  const FigureLoaded(this.figure);
+//   const FigureError(this.message);
 
-  @override
-  List<Object> get props => [figure];
-}
-
-class FigureError extends FigureState {
-  final String message;
-
-  const FigureError(this.message);
-
-  @override
-  List<Object> get props => [message];
-}
+//   @override
+//   List<Object> get props => [message];
+// }

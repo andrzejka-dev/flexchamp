@@ -9,7 +9,7 @@ class RootCubit extends Cubit<RootState> {
   RootCubit()
       : super(
           const RootState(
-            user: null,
+            users: null,
             isLoading: false,
             errorMessage: '',
           ),
@@ -24,7 +24,7 @@ class RootCubit extends Cubit<RootState> {
   Future<void> start() async {
     emit(
       const RootState(
-        user: null,
+        users: null,
         isLoading: true,
         errorMessage: '',
       ),
@@ -33,14 +33,14 @@ class RootCubit extends Cubit<RootState> {
     _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
       (user) {
         emit(
-          RootState(user: user, isLoading: false, errorMessage: ''),
+          RootState(users: user, isLoading: false, errorMessage: ''),
         );
       },
     )..onError(
         (error) {
           emit(
             RootState(
-              user: null,
+              users: null,
               isLoading: false,
               errorMessage: error.toString(),
             ),
