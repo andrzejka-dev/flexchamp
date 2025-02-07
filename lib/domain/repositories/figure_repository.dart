@@ -3,75 +3,57 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FiguresRepository {
+  final FirebaseFirestore _firestore;
+  final FirebaseAuth _auth;
+
+  FiguresRepository({
+    FirebaseFirestore? firestore,
+    FirebaseAuth? auth,
+  })  : _firestore = firestore ?? FirebaseFirestore.instance,
+        _auth = auth ?? FirebaseAuth.instance;
+
   Stream<List<FigureModel>> getFiguresStream() {
-    final userID = FirebaseAuth.instance.currentUser?.uid;
-    if (userID == null) {
-      throw Exception('User is not logged in');
+    try {
+      final userID = _auth.currentUser?.uid;
+      if (userID == null) {
+        throw Exception('User is not logged in');
+      }
+
+      return _firestore
+          .collection('figure')
+          .snapshots()
+          .map((querySnapshot) {
+            return querySnapshot.docs.map(
+              (doc) => FigureModel.fromMap(doc.data(), doc.id),
+            ).toList();
+          });
+    } catch (e) {
+      return Stream.error('Repository error: $e');
     }
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(userID)
-        .collection('figure')
-        .snapshots()
-        .map((querySnapshot) {
-      return querySnapshot.docs.map(
-        (doc) {
-          return FigureModel(
-            figureIcon: doc['figureIcon'],
-            title: doc['title'],
-          );
-        },
-      ).toList();
-    });
   }
+}
 
-  // Future<void> delete({required String id}) {
-  //   final userID = FirebaseAuth.instance.currentUser?.uid;
-  //   if (userID == null) {
-  //     throw Exception('User is not logged in');
-  //   }
-  //   return FirebaseFirestore.instance
-  //       .collection('users')
-  //       .doc(userID)
-  //       .collection('figure')
-  //       .doc(id)
-  //       .delete();
-  // }
 
-  Future<FigureModel> get({required String id}) async {
-    final userID = FirebaseAuth.instance.currentUser?.uid;
-    if (userID == null) {
-      throw Exception('User is not logged in');
-    }
-    final doc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userID)
-        .collection('figure')
-        .doc()
-        .get();
-    return FigureModel(
-      title: doc['title'],
-      figureIcon: doc['figureIcon'],
-    );
-  }
 
-//   Future<void> add(
-//     String title,
-//     String imageURL,
-//   ) async {
+
+// class FiguresRepository {
+//   Stream<List<FigureModel>> getFiguresStream() {
 //     final userID = FirebaseAuth.instance.currentUser?.uid;
 //     if (userID == null) {
 //       throw Exception('User is not logged in');
 //     }
-//     await FirebaseFirestore.instance
-//         .collection('users')
-//         .doc(userID)
+//     return FirebaseFirestore.instance
 //         .collection('figure')
-//         .add(
-//       {
-//         'title': title,
-//         'figureIcon': figureIcon,
-//       },
-//     );
+//         .snapshots()
+//         .map((querySnapshot) {
+//       return querySnapshot.docs.map(
+//         (doc) {
+//           return FigureModel(
+//             figureIcon: doc['figureIcon'],
+//             title: doc['title'],
+//           );
+//         },
+//       ).toList();
+//     });
 //   }
- }
+//  }

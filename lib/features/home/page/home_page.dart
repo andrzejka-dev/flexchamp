@@ -41,9 +41,6 @@ class HomePage extends StatelessWidget {
           if (figureModels.isEmpty) {
             return const SizedBox.shrink();
            }
-          // if (state.loadingErrorOccured) {
-          //   return const Center(child: CircularProgressIndicator());
-          // }
           if (state.figure.isNotEmpty) {
             return Column(
               children: [
@@ -53,9 +50,11 @@ class HomePage extends StatelessWidget {
                     final figureModel = figureModels[index];
                     return ListTile(
                       tileColor: Color(0xFF9DAF9B),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      leading: Text(figureModel.figureIcon, style: TextStyle(fontSize: 24),), // Display icon
-                      title: Text(figureModel.title),
+                      leading: Text(
+                      figureModel.figureIcon,
+                      style: const TextStyle(fontSize: 24),
+                ),
+                      title: Text(figureModel.title.first),
                       trailing: Icon(Icons.arrow_forward, color: Colors.white),
                     );
                   },

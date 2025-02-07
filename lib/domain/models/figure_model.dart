@@ -1,19 +1,20 @@
 class FigureModel {
-    FigureModel({
+  final List<String> title;
+  final String figureIcon;
+  final String id;
+
+  
+  FigureModel({
     required this.title,
     required this.figureIcon,
+    required this.id,
   });
 
-  final String title;
-  final String figureIcon;
-  
-
-
-
-  factory FigureModel.fromJson(Map<String, dynamic> json) {
+  factory FigureModel.fromMap(Map<String, dynamic> map, String documentId) {
     return FigureModel(
-      title: json['title'] ?? '',
-      figureIcon: json['figureIcon'] ?? '',
+      figureIcon: map['figureIcon'] ?? '',
+      title: List<String>.from(map['title'] ?? []),
+      id: documentId,
     );
   }
 }
