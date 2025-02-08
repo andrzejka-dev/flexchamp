@@ -17,21 +17,11 @@ class FigureCubit extends Cubit<FigureState> {
       },
     )..onError(
         (error) {
-          emit(const FigureState(loadingErrorOccured: true));
+          print('Error loading figures: $error');
+          emit(const FigureState(loadingErrorOccurred: true));
         },
       );
   }
-
-  // Future<void> remove({required String documentID}) async {
-  //   try {
-  //     await _figuresRepository.delete(id: documentID);
-  //   } catch (error) {
-  //     emit(
-  //       const FigureState(removingErrorOccured: true),
-  //     );
-  //     start();
-  //   }
-  // }
 
   @override
   Future<void> close() {

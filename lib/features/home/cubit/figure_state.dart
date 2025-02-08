@@ -3,13 +3,13 @@ import 'package:flexchamp/domain/models/figure_model.dart';
 class FigureState {
   const FigureState({
     this.figure = const [],
-    this.loadingErrorOccured = false,
-    this.removingErrorOccured = false,
+    this.loadingErrorOccurred = false,
+    this.removingErrorOccurred = false,
   });
 
   final List<FigureModel> figure;
-  final bool loadingErrorOccured;
-  final bool removingErrorOccured;
+  final bool loadingErrorOccurred;
+  final bool removingErrorOccurred;
 }
 
 
