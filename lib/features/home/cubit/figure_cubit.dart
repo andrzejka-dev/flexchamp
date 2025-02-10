@@ -13,12 +13,11 @@ class FigureCubit extends Cubit<FigureState> {
   Future<void> start() async {
     _streamSubscription = _figuresRepository.getFiguresStream().listen(
       (figure) {
-        emit(FigureState(figure: figure));
+        emit(FigureState(figures: figure));
       },
     )..onError(
         (error) {
-          print('Error loading figures: $error');
-          emit(const FigureState(loadingErrorOccurred: true));
+          emit(const FigureState(loadingErrorOccurred: true, isLoading: false,),);
         },
       );
   }
@@ -31,27 +30,3 @@ class FigureCubit extends Cubit<FigureState> {
 }
 
 
-//FigureCubit z claudeAI
-// class FigureCubit extends Cubit<FigureState> {
-//   final FirebaseFirestore _firestore;
-
-//   FigureCubit(this._firestore) : super(FigureInitial());
-
-//   Future<void> start() async {
-//     try {
-//       emit(FigureLoading());
-      
-//       final snapshot = await _firestore
-//           .collection('figure')
-//           .get();
-
-//       final figure = snapshot.docs
-//           .map((doc) => FigureModel.fromJson(doc.data()))
-//           .toList();
-
-//       emit(FigureLoaded(figure));
-//     } catch (e) {
-//       emit(FigureError(e.toString()));
-//     }
-//   }
-// }

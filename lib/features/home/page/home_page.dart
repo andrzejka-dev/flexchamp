@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexchamp/domain/repositories/figure_repository.dart';
 import 'package:flexchamp/features/auth/user_profile.dart';
+import 'package:flexchamp/features/details/details_page.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/cubit/figure_state.dart';
 import 'package:flutter/material.dart';
@@ -38,22 +39,31 @@ class HomePage extends StatelessWidget {
               return const Center(child: Text('Error loading figures'));
             }
 
-            if (state.figure.isEmpty) {
+            if (state.figures.isEmpty) {
               return const Center(child: Text('No figures found'));
             }
 
             return ListView.builder(
-              itemCount: state.figure.length,
+              itemCount: state.figures.length,
               itemBuilder: (context, index) {
-                final figureModel = state.figure[index];
+                final figureModel = state.figures[index];
                 return ListTile(
                   tileColor: const Color(0xFF9DAF9B),
                   leading: Text(
                     figureModel.figureIcon,
                     style: const TextStyle(fontSize: 24),
                   ),
-                  title: Text(figureModel.title.first),
-                  trailing: const Icon(Icons.arrow_forward, color: Colors.white),
+                  title: Text(figureModel.title),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailsPage(figureType: figureModel.title.toLowerCase(),), // Replace NextScreen with your actual screen widget
+            ),
+          );
+        },
+        child: const Icon(Icons.arrow_forward, color: Colors.white),)
                 );
               },
             );
@@ -64,25 +74,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-//          body: BlocProvider(
-//   create: (context) => HomeCubit()..start(),
-//   child: BlocBuilder<HomeCubit, HomeState>(
-//     builder: (context, state) {
-//       if (state.errorMessage.isNotEmpty) {
-//         return Text('Something went wrong: ${state.errorMessage}');
-//       }
-
-//       if (!state.isLoading) {
-//         return const Center(child: CircularProgressIndicator());
-//       }
-
-//       return Center(
-//         child: Text('User name is ${currentUser.displayName}'),
-//       );
-//     },
-//   ),
-// )
-      
-//     );
-//   }
-// }

@@ -23,37 +23,22 @@ class FiguresRepository {
           .collection('figure')
           .snapshots()
           .map((querySnapshot) {
-            return querySnapshot.docs.map(
-              (doc) => FigureModel.fromMap(doc.data(), doc.id),
-            ).toList();
+            try {
+              return querySnapshot.docs.map((doc) {
+                // Add error handling for each document conversion
+                try {
+                  return FigureModel.fromMap(doc.data(), doc.id);
+                } catch (e) {
+                  rethrow;
+                }
+              }).toList();
+            } catch (e) {
+              rethrow;
+            }
           });
     } catch (e) {
-      return Stream.error('Repository error: $e');
+      return Stream.error('Failed to load figures: $e');
     }
   }
 }
 
-
-
-
-// class FiguresRepository {
-//   Stream<List<FigureModel>> getFiguresStream() {
-//     final userID = FirebaseAuth.instance.currentUser?.uid;
-//     if (userID == null) {
-//       throw Exception('User is not logged in');
-//     }
-//     return FirebaseFirestore.instance
-//         .collection('figure')
-//         .snapshots()
-//         .map((querySnapshot) {
-//       return querySnapshot.docs.map(
-//         (doc) {
-//           return FigureModel(
-//             figureIcon: doc['figureIcon'],
-//             title: doc['title'],
-//           );
-//         },
-//       ).toList();
-//     });
-//   }
-//  }

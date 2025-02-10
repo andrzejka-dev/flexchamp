@@ -1,9 +1,8 @@
 class FigureModel {
-  final List<String> title;
+  final String title;    // Changed from List<String> to String
   final String figureIcon;
   final String id;
 
-  
   FigureModel({
     required this.title,
     required this.figureIcon,
@@ -13,7 +12,7 @@ class FigureModel {
   factory FigureModel.fromMap(Map<String, dynamic> map, String documentId) {
     return FigureModel(
       figureIcon: map['figureIcon'] ?? '',
-      title: List<String>.from(map['title'] ?? []),
+      title: map['title'] ?? '',  // Now expecting a single String
       id: documentId,
     );
   }
