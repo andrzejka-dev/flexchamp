@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsPage(figureType: figureModel.title.toLowerCase(),), // Replace NextScreen with your actual screen widget
+                        builder: (context) => DetailsPage(title: figureModel.title,), 
             ),
           );
         },

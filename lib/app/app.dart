@@ -1,4 +1,3 @@
-
 import 'package:flexchamp/app/cubit/root_cubit.dart';
 import 'package:flexchamp/domain/repositories/figure_repository.dart';
 import 'package:flexchamp/features/auth/auth_gate.dart';
