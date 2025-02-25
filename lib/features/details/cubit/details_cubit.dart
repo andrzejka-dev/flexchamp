@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/details_repository.dart';
 import 'package:flexchamp/features/details/cubit/details_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,24 +12,37 @@ DetailsCubit(this._detailsRepository) : super(const DetailsState());
 
   StreamSubscription? _streamSubscription;
 
-Future<void> getDetails(String figureType) async {
-    _streamSubscription?.cancel();
+Future<void> getDetails(String title) async {
+    emit(DetailsState(status: Status.loading),);
     
-    _streamSubscription = _detailsRepository.getFigureDetails(figureType).listen(
-      (figures) {
-        emit(DetailsState(
-          figures: figures,
-          isLoading: false,
-        ));
-      },
-    )..onError(
-        (error) {
-          emit(const DetailsState(
-            loadingErrorOccurred: true,
-            isLoading: false,
-          ));
+try {
+      _streamSubscription = _detailsRepository.getFigureDetails(title).listen(
+        (figures) {
+          emit(
+            DetailsState(
+              status: Status.success,
+              figures: figures,
+            ),
+          );
         },
       );
+      
+      _streamSubscription?.onError((error) {
+        emit(
+          DetailsState(
+            status: Status.error,
+            errorMessage: error.toString(),
+          ),
+        );
+      });
+    } catch (error) {
+      emit(
+        DetailsState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   @override

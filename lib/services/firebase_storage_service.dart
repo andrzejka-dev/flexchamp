@@ -94,10 +94,10 @@ class FirebaseStorageService {
           "photoURL": photoURLs,
         });
 
-        print("Updated Firestore for $docName ✅");
+        ("Updated Firestore for $docName ✅");
       }
     } catch (e) {
-      print("Error updating Firestore: $e ❌");
+      ("Error updating Firestore: $e ❌");
     }
   }
 }

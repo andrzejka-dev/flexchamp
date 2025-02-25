@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/figure_repository.dart';
 import 'package:flexchamp/features/home/cubit/figure_state.dart';
 
@@ -13,11 +14,18 @@ class FigureCubit extends Cubit<FigureState> {
   Future<void> start() async {
     _streamSubscription = _figuresRepository.getFiguresStream().listen(
       (figure) {
-        emit(FigureState(figures: figure));
+        emit(state.copyWith(
+          figures: figure,
+          status: Status.success,
+        ));
       },
     )..onError(
         (error) {
-          emit(const FigureState(loadingErrorOccurred: true, isLoading: false,),);
+          // Emit error state with error message
+          emit(state.copyWith(
+            status: Status.error,
+            errorMessage: error.toString(),
+          ));
         },
       );
   }

@@ -1,29 +1,27 @@
+import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/models/detail_model.dart';
 
+
 class DetailsState {
- const DetailsState({
-   this.figures = const [],
-   this.isLoading = false,
-   this.loadingErrorOccurred = false,
-   this.removingErrorOccurred = false,
- });
+  const DetailsState({
+    this.figures = const [],
+    this.status = Status.initial,
+    this.errorMessage = '',
+  });
 
- final List<DetailModel> figures;
- final bool isLoading;
- final bool loadingErrorOccurred; 
- final bool removingErrorOccurred;
+  final List<DetailModel> figures;
+  final Status status;
+  final String errorMessage;
 
- DetailsState copyWith({
-   List<DetailModel>? figures,
-   bool? isLoading,
-   bool? loadingErrorOccurred,
-   bool? removingErrorOccurred,
- }) {
-   return DetailsState(
-     figures: figures ?? this.figures,
-     isLoading: isLoading ?? this.isLoading,
-     loadingErrorOccurred: loadingErrorOccurred ?? this.loadingErrorOccurred,
-     removingErrorOccurred: removingErrorOccurred ?? this.removingErrorOccurred,
-   );
- }
+  DetailsState copyWith({
+    List<DetailModel>? figures,
+    Status? status,
+    String? errorMessage,
+  }) {
+    return DetailsState(
+      figures: figures ?? this.figures,
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 }

@@ -1,0 +1,162 @@
+import 'package:flexchamp/app/core/enums.dart';
+import 'package:flexchamp/domain/repositories/details_repository.dart';
+import 'package:flexchamp/features/details/cubit/details_cubit.dart';
+import 'package:flexchamp/features/details/cubit/details_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
+class DetailsPage extends StatelessWidget {
+  final String title;
+
+  const DetailsPage({super.key, required this.title});
+
+  @override
+Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => DetailsCubit(DetailsRepository())..getDetails(title),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.purple, Colors.orange],
+            ),
+          ),
+          child: BlocBuilder<DetailsCubit, DetailsState>(
+            builder: (context, state) {
+              switch (state.status) {
+                case Status.initial:
+                case Status.loading:
+                  return const Center(
+                    child: CircularProgressIndicator(color: Colors.white),
+                  );
+                
+                case Status.success:
+                  if (state.figures.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        'No figures found',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    );
+                  }
+                  
+                  final figure = state.figures.first;
+                  return CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        backgroundColor: Colors.transparent,
+                        expandedHeight: 200.0,
+                        floating: false,
+                        pinned: true,
+                        flexibleSpace: FlexibleSpaceBar(
+                          title: Text(title),
+                          background: figure.photoURLs.isNotEmpty
+                              ? Image.network(
+                                  figure.photoURLs.first,
+                                  fit: BoxFit.cover,
+                                )
+                              : Container(color: Colors.purple.withAlpha(53)),
+                        ),
+                      ),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            if (index >= figure.names.length) return null;
+                            
+                            return Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                                vertical: 8.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(51),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      figure.names[index],
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(
+                                      bottom: Radius.circular(12),
+                                    ),
+                                    child: Image.network(
+                                      figure.photoURLs[index],
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: 200,
+                                      errorBuilder: (context, error, stackTrace) {
+                                        return const SizedBox(
+                                          height: 200,
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.error_outline,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Text(
+                                      figure.descriptions[index],
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                          childCount: state.figures.isEmpty ? 0 : state.figures.first.names.length,
+                        ),
+                      ),
+                    ],
+                  );
+                
+                case Status.error:
+                  return Center(
+                    child: Text(
+                      'Error: ${state.errorMessage}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  );
+              }
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
