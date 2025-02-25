@@ -19,7 +19,7 @@ class DetailModel {
     return DetailModel(
       id: id,
       names: List<String>.from(map['name'] ?? []),
-      descriptions: map['description'] ?? '',
+      descriptions: List<String>.from(map['description'] ?? []),
       photoURLs: List<String>.from(map['photoURL'] ?? []),
       title: map['title'] ?? '',
       figureIcon: map['figureIcon'] ?? '',

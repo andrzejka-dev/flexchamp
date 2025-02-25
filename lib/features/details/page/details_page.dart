@@ -11,24 +11,45 @@ class DetailsPage extends StatelessWidget {
 
   const DetailsPage({super.key, required this.title});
 
-  @override
-Widget build(BuildContext context) {
+@override
+  Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => DetailsCubit(DetailsRepository())..getDetails(title),
       child: Scaffold(
         extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        // Custom AppBar with only a white back arrow and "BACK" text
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          leading: InkWell(
+            onTap: () => Navigator.of(context).pop(),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                ),
+                const Text(
+                  "BACK",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          leadingWidth: 80, // Provide enough space for the arrow and text
+          title: Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        iconTheme: const IconThemeData(color: Colors.white),
-      ),
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -59,13 +80,17 @@ Widget build(BuildContext context) {
                   final figure = state.figures.first;
                   return CustomScrollView(
                     slivers: [
+                      // Modify SliverAppBar to not show title text
                       SliverAppBar(
                         backgroundColor: Colors.transparent,
-                        expandedHeight: 200.0,
+                        expandedHeight: 180.0,
                         floating: false,
                         pinned: true,
+                        // Remove back button and other navigation icons
+                        automaticallyImplyLeading: false,
                         flexibleSpace: FlexibleSpaceBar(
-                          title: Text(title),
+                          // Remove the title text
+                          title: null,
                           background: figure.photoURLs.isNotEmpty
                               ? Image.network(
                                   figure.photoURLs.first,
@@ -110,7 +135,7 @@ Widget build(BuildContext context) {
                                       figure.photoURLs[index],
                                       fit: BoxFit.cover,
                                       width: double.infinity,
-                                      height: 200,
+                                      height: 250,
                                       errorBuilder: (context, error, stackTrace) {
                                         return const SizedBox(
                                           height: 200,

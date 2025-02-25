@@ -17,11 +17,11 @@ Future<void> getDetails(String title) async {
     
 try {
       _streamSubscription = _detailsRepository.getFigureDetails(title).listen(
-        (figures) {
+        (figure) {
           emit(
             DetailsState(
               status: Status.success,
-              figures: figures,
+              figures: figure,
             ),
           );
         },

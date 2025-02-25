@@ -8,9 +8,10 @@ class DetailsRepository {
   DetailsRepository({FirebaseFirestore? firestore}) 
     : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  Stream<List<DetailModel>> getFigureDetails(String figureType) {
+  Stream<List<DetailModel>> getFigureDetails(String title) {
     return _firestore
-      .collection(figureType.toLowerCase()) // 'bridge', 'split', etc.
+      .collection('figure') // Use the collection name from your security rules
+      .where('title', isEqualTo: title) // 'bridge', 'split', etc.
       .snapshots()
       .map((snapshot) => 
         snapshot.docs.map((doc) => 
