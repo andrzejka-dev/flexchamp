@@ -8,14 +8,44 @@ class StorageUpdateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Admin - Storage Update')),
-      body: Center(
-        child: _UpdateButton(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _UpdateButton(
+              title: 'Update Photo URLs',
+              updateFunction: (service) => service.updatePhotoURLs(),
+            ),
+            const SizedBox(height: 20),
+            _UpdateButton(
+              title: 'Update Figure Icons',
+              updateFunction: (service) => service.updateFigureIconsAndPhotos(),
+            ),
+            const SizedBox(height: 20),
+            _UpdateButton(
+              title: 'Update All (Photos & Icons)',
+              updateFunction: (service) async {
+                await service.updatePhotoURLs();
+                await service.updateFigureIconsAndPhotos();
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
 class _UpdateButton extends StatefulWidget {
+  final String title;
+  final Future<void> Function(FirebaseStorageService) updateFunction;
+
+  const _UpdateButton({
+    required this.title,
+    required this.updateFunction,
+  });
+
   @override
   State<_UpdateButton> createState() => _UpdateButtonState();
 }
@@ -23,7 +53,7 @@ class _UpdateButton extends StatefulWidget {
 class _UpdateButtonState extends State<_UpdateButton> {
   bool _isLoading = false;
 
-  Future<void> _updateUrls() async {
+  Future<void> _performUpdate() async {
     if (!mounted) return;
     
     setState(() {
@@ -32,12 +62,12 @@ class _UpdateButtonState extends State<_UpdateButton> {
 
     try {
       final service = FirebaseStorageService();
-      await service.updatePhotoURLs();
+      await widget.updateFunction(service);
       
       if (!mounted) return;
       
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('URLs updated successfully!')),
+        SnackBar(content: Text('${widget.title} completed successfully!')),
       );
     } catch (e) {
       if (!mounted) return;
@@ -56,11 +86,14 @@ class _UpdateButtonState extends State<_UpdateButton> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading
-        ? const CircularProgressIndicator()
-        : ElevatedButton(
-            onPressed: _updateUrls,
-            child: const Text('Update Storage URLs'),
-          );
+    return SizedBox(
+      width: 250,
+      child: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ElevatedButton(
+              onPressed: _performUpdate,
+              child: Text(widget.title),
+            ),
+    );
   }
 }

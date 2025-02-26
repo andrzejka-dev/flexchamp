@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/figure_repository.dart';
+import 'package:flexchamp/features/admin/storage_update_screen.dart';
 import 'package:flexchamp/features/auth/user_profile.dart';
 import 'package:flexchamp/features/details/page/details_page.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
@@ -13,6 +14,9 @@ class HomePage extends StatelessWidget {
   final User currentUser; 
 
   const HomePage({super.key, required this.currentUser});
+  bool _isAdmin() {
+    return true;
+  }
 
   @override
     Widget build(BuildContext context) {
@@ -29,6 +33,20 @@ class HomePage extends StatelessWidget {
             style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
+            // Admin button - only appears for admin users
+            if (_isAdmin())
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const StorageUpdateScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.admin_panel_settings, color: Colors.white),
+                tooltip: 'Admin Tools',
+              ),
+            // User profile button (existing)
             IconButton(
               onPressed: () {
                 Navigator.of(context).push(
@@ -41,14 +59,43 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+
+  //   Widget build(BuildContext context) {
+  //   return BlocProvider(
+  //     create: (context) => FigureCubit(FiguresRepository())..start(),
+  //     child: Scaffold(
+  //       backgroundColor: Colors.transparent,
+  //       extendBodyBehindAppBar: true,
+  //       appBar: AppBar(
+  //         backgroundColor: Colors.transparent,
+  //         elevation: 0,
+  //         title: Text(
+  //           AppLocalizations.of(context)!.helloWorld,
+  //           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+  //         ),
+  //         actions: [
+  //           IconButton(
+  //             onPressed: () {
+  //               Navigator.of(context).push(
+  //                 MaterialPageRoute(
+  //                   builder: (context) => const UserProfileScreen(),
+  //                 ),
+  //               );
+  //             },
+  //             icon: const Icon(Icons.person, color: Colors.white),
+  //           ),
+  //         ],
+  //       ),
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFFA83FBA), // Purple top
-                Color(0xFFFF7F00), // Orange bottom
+                Color(0xFF7B63AA), // Brighter purple at top
+        Color(0xFFA77CB2), // Vibrant mid purple
+        Color(0xFFD3A1B8), // Bright mauve/pink
+        Color(0xFFFFB091),
               ],
             ),
           ),
@@ -95,11 +142,25 @@ class HomePage extends StatelessWidget {
                                 horizontal: 20.0,
                                 vertical: 12.0,
                               ),
-                              leading: Text(
-                                figureModel.figureIcon,
-                                style: const TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.white,
+                              leading: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                clipBehavior: Clip.antiAlias,
+                                child: Image.network(
+                                  figureModel.figureIcon,
+                                  width: 40,
+                                  height: 40,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      color: Colors.grey.shade300,
+                                      child: const Icon(Icons.person,
+                                          color: Colors.white),
+                                    );
+                                  },
                                 ),
                               ),
                               title: Text(
@@ -166,4 +227,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 

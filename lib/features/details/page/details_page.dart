@@ -2,6 +2,8 @@ import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/details_repository.dart';
 import 'package:flexchamp/features/details/cubit/details_cubit.dart';
 import 'package:flexchamp/features/details/cubit/details_state.dart';
+import 'package:flexchamp/features/details/page/photo_mapping_util.dart';
+import 'package:flexchamp/features/home/widgets/photo_gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,7 +57,11 @@ class DetailsPage extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Colors.purple, Colors.orange],
+              colors: [Color(0xFF7B63AA), // Brighter purple at top
+                Color(0xFFA77CB2), // Vibrant mid purple
+                Color(0xFFD3A1B8), // Bright mauve/pink
+                Color(0xFFFFB091), // Lighter orange at bottom                
+             ],
             ),
           ),
           child: BlocBuilder<DetailsCubit, DetailsState>(
@@ -128,25 +134,19 @@ class DetailsPage extends StatelessWidget {
                                     ),
                                   ),
                                   ClipRRect(
-                                    borderRadius: const BorderRadius.vertical(
+                                      borderRadius: const BorderRadius.vertical(
                                       bottom: Radius.circular(12),
                                     ),
-                                    child: Image.network(
-                                      figure.photoURLs[index],
-                                      fit: BoxFit.cover,
+                                    child: SizedBox(
                                       width: double.infinity,
                                       height: 250,
-                                      errorBuilder: (context, error, stackTrace) {
-                                        return const SizedBox(
-                                          height: 200,
-                                          child: Center(
-                                            child: Icon(
-                                              Icons.error_outline,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        );
-                                      },
+                                      child: PhotoGallery(
+                                        photoURLs: PhotoMappingUtil.getPhotoURLsForExercise(
+                                        figure,
+                                        figure.names[index],
+                                        title,
+                                      )
+                                      ),
                                     ),
                                   ),
                                   Padding(
