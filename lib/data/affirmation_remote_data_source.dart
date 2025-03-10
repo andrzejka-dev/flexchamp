@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 
 class AffirmationRemoteDataSource {
-  Future<Map<String, dynamic>?> getAffirmationData({
+  Future<Map<String, dynamic>?> getAffirmation({
     required String imageUrl,
   }) async {
     try {

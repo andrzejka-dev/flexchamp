@@ -8,7 +8,7 @@ class AffirmationRepository {
 
  
   Future<AffirmationModel?> getAffirmations({required String imageUrl}) async {
-    final json = await _affirmationRemoteDataSource.getAffirmationData(imageUrl: imageUrl,);
+    final json = await _affirmationRemoteDataSource.getAffirmation(imageUrl: imageUrl,);
     if (json == null) {
       return null;
     }
