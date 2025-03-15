@@ -6,39 +6,43 @@ import 'package:flexchamp/domain/repositories/affirmation_repository.dart';
 part 'affirmation_state.dart';
 
 class AffirmationCubit extends Cubit<AffirmationState> {
-  final AffirmationRepository _repository;
+  AffirmationCubit(this.affirmationRepository) : super(AffirmationState());
 
-  AffirmationCubit({required AffirmationRepository repository}) 
-      : _repository = repository,
-        super(const AffirmationState());
+  final AffirmationRepository affirmationRepository;
 
-  Future<void> getRandomAffirmation() async {
-    emit(state.copyWith(status: Status.loading));
+  Future<void> fetchRandomAffirmation() async {
+    emit(
+      const AffirmationState(
+        status: Status.loading,
+      ),
+    );
     
     try {
-      // Using a placeholder value since the actual URL comes from the JSON response
-      final affirmation = await _repository.getAffirmations(imageUrl: 'placeholder');
+      final affirmation = await affirmationRepository.getRandomAffirmation();
       
-      if (affirmation != null) {
-        emit(state.copyWith(
-          affirmation: [affirmation], // Replace the list with the new affirmation
-          status: Status.initial,
-        ));
-      } else {
-        emit(state.copyWith(
-          status: Status.error,
-          errorMessage: 'Failed to load affirmation',
-        ));
+      if (affirmation == null) {
+        emit(
+          const AffirmationState(
+            status: Status.error,
+            errorMessage: 'Failed to load affirmation',
+          ),
+        );
+        return;
       }
-    } catch (e) {
-      emit(state.copyWith(
-        status: Status.error,
-        errorMessage: e.toString(),
-      ));
+      
+      emit(
+        AffirmationState(
+          status: Status.success,
+          affirmation: affirmation,
+        ),
+      );
+    } catch (error) {
+      emit(
+        AffirmationState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
     }
-  }
-  
-  Future<void> resetAffirmations() async {
-    emit(const AffirmationState());
   }
 }
