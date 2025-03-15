@@ -9,7 +9,6 @@ import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/cubit/figure_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatelessWidget {
   final User currentUser;
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            AppLocalizations.of(context)!.helloWorld,
+            'Welcome to FlexChamp!',
             style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold),
           ),
@@ -62,44 +61,19 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-
-        //   Widget build(BuildContext context) {
-        //   return BlocProvider(
-        //     create: (context) => FigureCubit(FiguresRepository())..start(),
-        //     child: Scaffold(
-        //       backgroundColor: Colors.transparent,
-        //       extendBodyBehindAppBar: true,
-        //       appBar: AppBar(
-        //         backgroundColor: Colors.transparent,
-        //         elevation: 0,
-        //         title: Text(
-        //           AppLocalizations.of(context)!.helloWorld,
-        //           style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        //         ),
-        //         actions: [
-        //           IconButton(
-        //             onPressed: () {
-        //               Navigator.of(context).push(
-        //                 MaterialPageRoute(
-        //                   builder: (context) => const UserProfileScreen(),
-        //                 ),
-        //               );
-        //             },
-        //             icon: const Icon(Icons.person, color: Colors.white),
-        //           ),
-        //         ],
-        //       ),
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
               colors: [
-                Color(0xFF7B63AA), 
-                Color(0xFFA77CB2), 
-                Color(0xFFD3A1B8), 
-                Color(0xFFFFB091),
+                Color(0xFF9D7BCA), // Purple-lavender (top left)
+                Color(0xFF7B6CB0), // Medium purple (center top)
+                Color(0xFF8D72B8), // Medium purple-blue (center)
+                Color(0xFFB683A8), // Pinkish purple (center bottom)
+                Color(0xFFE9A8A2),
               ],
+              stops: [0.0, 0.3, 0.5, 0.7, 0.9],
             ),
           ),
           child: SafeArea(
@@ -114,7 +88,8 @@ class HomePage extends StatelessWidget {
                           case Status.initial:
                           case Status.loading:
                             return const Center(
-                              child: CircularProgressIndicator(color: Colors.white),
+                              child: CircularProgressIndicator(
+                                  color: Colors.white),
                             );
 
                           case Status.success:
@@ -131,7 +106,8 @@ class HomePage extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final figureModel = state.figures[index];
                                 return Container(
-                                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
                                   decoration: BoxDecoration(
                                     color: Colors.white.withAlpha(51),
                                     borderRadius: BorderRadius.circular(16.0),
@@ -160,7 +136,8 @@ class HomePage extends StatelessWidget {
                                         width: 40,
                                         height: 40,
                                         fit: BoxFit.cover,
-                                        errorBuilder: (context, error, stackTrace) {
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
                                           return Container(
                                             color: Colors.grey.shade300,
                                             child: const Icon(Icons.person,
@@ -191,10 +168,11 @@ class HomePage extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         decoration: BoxDecoration(
                                           color: Colors.white.withAlpha(51),
-                                          borderRadius: BorderRadius.circular(12.0),
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
                                         ),
                                         child: const Icon(
-                                          Icons.arrow_forward,
+                                          Icons.arrow_circle_right,
                                           color: Colors.white,
                                         ),
                                       ),
@@ -229,7 +207,8 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 16.0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(
@@ -260,7 +239,7 @@ class HomePage extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(
-                              Icons.favorite,
+                              Icons.grade,
                               color: Colors.white,
                               size: 28,
                             ),
@@ -296,7 +275,7 @@ class HomePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: const Icon(
-                              Icons.arrow_forward,
+                              Icons.arrow_circle_right,
                               color: Colors.white,
                             ),
                           ),
