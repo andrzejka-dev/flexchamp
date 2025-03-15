@@ -2,6 +2,8 @@ import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:palette_generator/palette_generator.dart';
 
 
 class AffirmationPage extends StatelessWidget {
@@ -58,15 +60,6 @@ class AffirmationPage extends StatelessWidget {
                           );
                         },
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "Affirmation #${state.affirmation!.id}",
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),
                     Card(

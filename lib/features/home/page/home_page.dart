@@ -122,7 +122,7 @@ class HomePage extends StatelessWidget {
                                   child: ListTile(
                                     contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 20.0,
-                                      vertical: 12.0,
+                                      vertical: 20.0,
                                     ),
                                     leading: Container(
                                       width: 40,
@@ -151,6 +151,7 @@ class HomePage extends StatelessWidget {
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
+                                        fontSize: 22.0,
                                       ),
                                     ),
                                     trailing: GestureDetector(
@@ -254,7 +255,7 @@ class HomePage extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                    fontSize: 20,
                                   ),
                                 ),
                                 SizedBox(height: 4.0),
