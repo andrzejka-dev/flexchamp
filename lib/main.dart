@@ -1,6 +1,7 @@
 //import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/data/affirmation_remote_data_source.dart';
 import 'package:flexchamp/domain/repositories/affirmation_repository.dart';
+import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; 
@@ -18,8 +19,10 @@ runApp(
     MultiProvider(
       providers: [
         // Provide AffirmationRepository at the app level
-        Provider<AffirmationRepository>(
-          create: (_) => AffirmationRepository(AffirmationRemoteDioDataSource()),
+        Provider<AffirmationCubit>(
+          create: (context) => AffirmationCubit(
+          AffirmationRepository(AffirmationRemoteDioDataSource()),
+          ),
         ),
         // Add any other app-level providers here
       ],
