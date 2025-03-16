@@ -3,7 +3,6 @@ import 'package:flexchamp/features/home/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 
-
 class AuthGate extends StatelessWidget {
   const AuthGate ({super.key});
 
@@ -20,7 +19,19 @@ Widget build(BuildContext context) {
       providers: [
       EmailAuthProvider(),
       ], 
-    );} //SignInScreen
+       headerBuilder: (context, constraints, _) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
+                child: Image.asset(
+                  'images/flexchamp_login.png', // Replace with your actual logo path
+                  width: 200,
+                  height: 200,
+                ),
+              );
+            },
+          );
+        }
+    //SignInScreen
 
 
     //Render your application if authenticated
