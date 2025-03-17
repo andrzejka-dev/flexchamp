@@ -23,6 +23,7 @@ class DetailsPage extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: DetailsAppBar(title: title),
         body: DetailsGradientBackground(
+
           child: BlocBuilder<DetailsCubit, DetailsState>(
             builder: (context, state) {
               switch (state.status) {
@@ -74,7 +75,7 @@ class DetailsPage extends StatelessWidget {
           ),
         ),
       ),
-    );
+      );
   }
 }
 

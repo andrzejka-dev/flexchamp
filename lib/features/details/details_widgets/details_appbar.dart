@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -15,12 +16,13 @@ class DetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       automaticallyImplyLeading: false,
       leading: BackButton(),
-      leadingWidth: 80, // Provide enough space for the arrow and text
+      leadingWidth: 50, // Provide enough space for the arrow and text
       title: Text(
         title,
-        style: const TextStyle(
+        style: GoogleFonts.montserrat(
           color: Colors.white,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w600,
+          fontSize: 28,
         ),
       ),
     );
@@ -40,16 +42,10 @@ class BackButton extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Icon(Icons.arrow_back, color: Colors.white, size: 20),
-          ),
-          const Text(
-            "BACK",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-            ),
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Icon(Icons.arrow_back,
+             color: Colors.white, 
+             size: 28),
           ),
         ],
       ),

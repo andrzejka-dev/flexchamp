@@ -2,6 +2,7 @@ import 'package:flexchamp/domain/models/detail_model.dart';
 import 'package:flexchamp/features/details/page/photo_mapping_util.dart';
 import 'package:flexchamp/features/home/home_widgets/photo_gallery.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ExerciseCard extends StatelessWidget {
   final String exerciseName;
@@ -58,11 +59,12 @@ class ExerciseTitle extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Text(
         name,
-        style: const TextStyle(
+        style: GoogleFonts.montserrat(
           fontSize: 20,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w600,
           color: Colors.white,
         ),
+        textAlign: TextAlign.center,
       ),
     );
   }
@@ -115,7 +117,8 @@ class ExerciseDescription extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Text(
         description,
-        style: const TextStyle(
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w300,
           fontSize: 16,
           color: Colors.white,
         ),

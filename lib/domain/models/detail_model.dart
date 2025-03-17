@@ -2,6 +2,7 @@ class DetailModel {
   final List<String> names;
   final List<String> descriptions;
   final List<String> photoURLs;
+  final String headerImage;
   final String id;
   final String title;
   final String figureIcon;
@@ -13,6 +14,7 @@ class DetailModel {
     required this.id,
     required this.title,
     required this.figureIcon,
+    required this.headerImage
   });
 
   factory DetailModel.fromMap(Map<String, dynamic> map, String id) {
@@ -23,6 +25,7 @@ class DetailModel {
       photoURLs: List<String>.from(map['photoURL'] ?? []),
       title: map['title'] ?? '',
       figureIcon: map['figureIcon'] ?? '',
+      headerImage: map['headerImage'] ?? ''
     );
   }
 
@@ -33,6 +36,7 @@ class DetailModel {
       'photoURL': photoURLs,
       'title': title,
       'figureIcon': figureIcon,
+      'headerImage': headerImage
     };
   }
 }
