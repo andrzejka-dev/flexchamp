@@ -14,9 +14,13 @@ class DetailsRepository {
       .where('title', isEqualTo: title) // 'bridge', 'split', etc.
       .snapshots()
       .map((snapshot) => 
-        snapshot.docs.map((doc) => 
-          DetailModel.fromMap(doc.data(), doc.id)
-        ).toList()
+        snapshot.docs.map((doc){
+          final data = doc.data();
+          final dataWithId = {...data, 'id': doc.id};
+          // Use the existing fromJson method
+          return DetailModel.fromJson(dataWithId);
+          //DetailModel.fromMap(doc.data(), doc.id)
+        }).toList()
       );
   }
 }

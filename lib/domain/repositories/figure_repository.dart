@@ -25,9 +25,10 @@ class FiguresRepository {
           .map((querySnapshot) {
             try {
               return querySnapshot.docs.map((doc) {
-                // Add error handling for each document conversion
                 try {
-                  return FigureModel.fromMap(doc.data(), doc.id);
+                  final data = doc.data();
+                  final dataWithId = {...data, 'id': doc.id};
+                  return FigureModel.fromJson(dataWithId);
                 } catch (e) {
                   rethrow;
                 }
