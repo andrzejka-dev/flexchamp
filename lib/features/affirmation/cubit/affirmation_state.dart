@@ -1,13 +1,14 @@
-part of 'affirmation_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flexchamp/app/core/enums.dart';
+import 'package:flexchamp/domain/models/affirmation_model.dart';
 
-class AffirmationState {
-  const AffirmationState({
-    this.affirmation,
-    this.status = Status.initial,
-    this.errorMessage = '',
-  });
+part 'affirmation_state.freezed.dart';
 
-  final AffirmationModel? affirmation;
-  final Status status;
-  final String errorMessage;
+@freezed
+class AffirmationState with _$AffirmationState {
+  const factory AffirmationState({
+    AffirmationModel? affirmation,
+    @Default(Status.initial) Status status,
+    @Default('') String errorMessage,
+  }) = _AffirmationState;
 }

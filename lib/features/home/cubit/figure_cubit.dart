@@ -14,7 +14,7 @@ class FigureCubit extends Cubit<FigureState> {
   Future<void> start() async {
     _streamSubscription = _figuresRepository.getFiguresStream().listen(
       (figure) {
-        emit(state.copyWith(
+        emit(FigureState(
           figures: figure,
           status: Status.success,
         ));
@@ -22,7 +22,7 @@ class FigureCubit extends Cubit<FigureState> {
     )..onError(
         (error) {
           // Emit error state with error message
-          emit(state.copyWith(
+          emit(FigureState(
             status: Status.error,
             errorMessage: error.toString(),
           ));
