@@ -1,4 +1,5 @@
 //import 'package:flexchamp/app/core/injection_container.dart';
+import 'package:dio/dio.dart';
 import 'package:flexchamp/data/affirmation_remote_data_source.dart';
 import 'package:flexchamp/domain/repositories/affirmation_repository.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
@@ -18,13 +19,11 @@ await Firebase.initializeApp(
 runApp(
     MultiProvider(
       providers: [
-        // Provide AffirmationRepository at the app level
         Provider<AffirmationCubit>(
           create: (context) => AffirmationCubit(
-          AffirmationRepository(AffirmationRemoteDioDataSource()),
+          AffirmationRepository(AffirmationRemoteRetrofitDataSource(Dio()),),
           ),
         ),
-        // Add any other app-level providers here
       ],
       child: const MyApp(),
     ),
