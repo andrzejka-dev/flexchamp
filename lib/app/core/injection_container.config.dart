@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
+import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flexchamp/app/core/firebase_module.dart' as _i921;
 import 'package:flexchamp/app/cubit/root_cubit.dart' as _i396;
@@ -37,12 +38,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final firebaseModule = _$FirebaseModule();
     gh.factory<_i396.RootCubit>(() => _i396.RootCubit());
-    gh.singleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
-    gh.singleton<_i59.FirebaseAuth>(() => firebaseModule.auth);
+    gh.factory<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
+    gh.factory<_i59.FirebaseAuth>(() => firebaseModule.auth);
     gh.factory<_i644.DetailsRepository>(() =>
         _i644.DetailsRepository(firestore: gh<_i974.FirebaseFirestore>()));
-    gh.factory<_i819.AffirmationRepository>(() => _i819.AffirmationRepository(
-        gh<_i380.AffirmationRemoteRetrofitDataSource>()));
     gh.factory<_i735.DetailsCubit>(
         () => _i735.DetailsCubit(gh<_i644.DetailsRepository>()));
     gh.factory<_i258.FiguresRepository>(() => _i258.FiguresRepository(
@@ -51,6 +50,13 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i148.FigureCubit>(
         () => _i148.FigureCubit(gh<_i258.FiguresRepository>()));
+    gh.factory<_i380.AffirmationRemoteRetrofitDataSource>(
+        () => _i380.AffirmationRemoteRetrofitDataSource(
+              gh<_i361.Dio>(),
+              baseUrl: gh<String>(),
+            ));
+    gh.factory<_i819.AffirmationRepository>(() => _i819.AffirmationRepository(
+        gh<_i380.AffirmationRemoteRetrofitDataSource>()));
     gh.factory<_i519.AffirmationCubit>(
         () => _i519.AffirmationCubit(gh<_i819.AffirmationRepository>()));
     return this;

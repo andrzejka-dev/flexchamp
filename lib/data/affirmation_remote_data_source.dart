@@ -8,6 +8,7 @@ part 'affirmation_remote_data_source.g.dart';
 @injectable
 @RestApi(baseUrl: 'https://andrzejka-dev.github.io/Affirmations/')
 abstract class AffirmationRemoteRetrofitDataSource {
+  @factoryMethod
   factory AffirmationRemoteRetrofitDataSource(Dio dio, {String baseUrl}) = _AffirmationRemoteRetrofitDataSource;
 
 @GET('/affirmations.json')
