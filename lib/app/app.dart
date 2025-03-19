@@ -1,5 +1,5 @@
+import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/app/cubit/root_cubit.dart';
-import 'package:flexchamp/domain/repositories/figure_repository.dart';
 import 'package:flexchamp/features/auth/auth_gate.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/page/home_page.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => FigureCubit(FiguresRepository())..start(),
+          create: (context) => getIt<FigureCubit>()..start(),
         ),
         BlocProvider(
           create: (context) => RootCubit()..start(),

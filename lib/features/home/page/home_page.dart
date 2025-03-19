@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flexchamp/domain/repositories/figure_repository.dart';
+import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/home_widgets/home_page_widgets_extract.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FigureCubit(FiguresRepository())..start(),
+      create: (context) => getIt<FigureCubit>()..start(),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,

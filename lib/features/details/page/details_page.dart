@@ -1,5 +1,5 @@
 import 'package:flexchamp/app/core/enums.dart';
-import 'package:flexchamp/domain/repositories/details_repository.dart';
+import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/features/details/cubit/details_cubit.dart';
 import 'package:flexchamp/features/details/cubit/details_state.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DetailsCubit(DetailsRepository())..getDetails(title),
+      create: (context) => getIt<DetailsCubit>()..getDetails(title),
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: DetailsAppBar(title: title),

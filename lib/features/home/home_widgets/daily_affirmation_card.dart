@@ -1,4 +1,4 @@
-import 'package:flexchamp/features/affirmation/affirmation_page.dart';
+import 'package:flexchamp/features/affirmation/page/affirmation_page.dart';
 import 'package:flutter/material.dart';
 
 class DailyAffirmationCard extends StatelessWidget {

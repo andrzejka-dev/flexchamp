@@ -3,8 +3,6 @@ import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:palette_generator/palette_generator.dart';
 
 
 class AffirmationPage extends StatelessWidget {

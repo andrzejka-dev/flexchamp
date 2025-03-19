@@ -1,7 +1,4 @@
-//import 'package:flexchamp/app/core/injection_container.dart';
-import 'package:dio/dio.dart';
-import 'package:flexchamp/data/affirmation_remote_data_source.dart';
-import 'package:flexchamp/domain/repositories/affirmation_repository.dart';
+import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +9,8 @@ import 'package:provider/provider.dart';
 
 void main() async {
 WidgetsFlutterBinding.ensureInitialized();
-//configureDependencies();
+configureDependencies();
+
 await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 ); 
@@ -20,9 +18,7 @@ runApp(
     MultiProvider(
       providers: [
         Provider<AffirmationCubit>(
-          create: (context) => AffirmationCubit(
-          AffirmationRepository(AffirmationRemoteRetrofitDataSource(Dio()),),
-          ),
+          create: (context) => getIt<AffirmationCubit>(),
         ),
       ],
       child: const MyApp(),

@@ -20,8 +20,6 @@ class AffirmationRepository {
       final randomIndex = Random().nextInt(affirmations.length);
       return affirmations[randomIndex];
     } catch (e) {
-      // Consider using a proper logging framework instead of print
-      // Logger.e('Error fetching affirmation: $e');
       return null;
     }
   }
