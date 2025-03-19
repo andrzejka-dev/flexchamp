@@ -6,20 +6,21 @@ part of 'detail_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DetailModel _$DetailModelFromJson(Map<String, dynamic> json) => DetailModel(
+_$DetailModelImpl _$$DetailModelImplFromJson(Map<String, dynamic> json) =>
+    _$DetailModelImpl(
       names: (json['name'] as List<dynamic>).map((e) => e as String).toList(),
       descriptions: (json['description'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
       photoURLs:
           (json['photoURL'] as List<dynamic>).map((e) => e as String).toList(),
+      headerImage: json['headerImage'] as String,
       id: json['id'] as String,
       title: json['title'] as String,
       figureIcon: json['figureIcon'] as String,
-      headerImage: json['headerImage'] as String,
     );
 
-Map<String, dynamic> _$DetailModelToJson(DetailModel instance) =>
+Map<String, dynamic> _$$DetailModelImplToJson(_$DetailModelImpl instance) =>
     <String, dynamic>{
       'name': instance.names,
       'description': instance.descriptions,

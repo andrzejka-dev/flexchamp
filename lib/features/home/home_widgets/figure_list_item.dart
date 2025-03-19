@@ -30,7 +30,7 @@ class FigureListItem extends StatelessWidget {
           horizontal: 20.0,
           vertical: 20.0,
         ),
-        leading: FigureAvatar(imageUrl: figureModel.figureIcon),
+        leading: FigureAvatar(imageUrl: figureModel.figureIcon ?? 'default_image_path.png'),
         title: Text(
           figureModel.title,
           style: const TextStyle(
