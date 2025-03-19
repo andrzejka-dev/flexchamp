@@ -1,15 +1,17 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
-
-import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 part 'root_state.dart';
 
+
+@injectable
 class RootCubit extends Cubit<RootState> {
   RootCubit()
       : super(
           const RootState(
-            users: null,
+            user: null,
             isLoading: false,
             errorMessage: '',
           ),
@@ -24,7 +26,7 @@ class RootCubit extends Cubit<RootState> {
   Future<void> start() async {
     emit(
       const RootState(
-        users: null,
+        user: null,
         isLoading: true,
         errorMessage: '',
       ),
@@ -33,14 +35,14 @@ class RootCubit extends Cubit<RootState> {
     _streamSubscription = FirebaseAuth.instance.authStateChanges().listen(
       (user) {
         emit(
-          RootState(users: user, isLoading: false, errorMessage: ''),
+          RootState(user: user, isLoading: false, errorMessage: ''),
         );
       },
     )..onError(
         (error) {
           emit(
             RootState(
-              users: null,
+              user: null,
               isLoading: false,
               errorMessage: error.toString(),
             ),

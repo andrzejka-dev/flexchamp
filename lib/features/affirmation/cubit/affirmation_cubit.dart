@@ -2,8 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/affirmation_repository.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_state.dart';
+import 'package:injectable/injectable.dart';
 
-
+@injectable
 class AffirmationCubit extends Cubit<AffirmationState> {
   AffirmationCubit(this.affirmationRepository) : super(AffirmationState());
 

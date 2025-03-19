@@ -3,8 +3,9 @@ import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/details_repository.dart';
 import 'package:flexchamp/features/details/cubit/details_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
-
+@injectable
 class DetailsCubit extends Cubit<DetailsState> {
 DetailsCubit(this._detailsRepository) : super(const DetailsState());
 

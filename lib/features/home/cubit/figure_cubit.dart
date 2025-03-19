@@ -3,7 +3,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/repositories/figure_repository.dart';
 import 'package:flexchamp/features/home/cubit/figure_state.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class FigureCubit extends Cubit<FigureState> {
   FigureCubit(this._figuresRepository) : super(const FigureState());
 

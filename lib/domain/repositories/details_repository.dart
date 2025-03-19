@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flexchamp/domain/models/detail_model.dart';
+import 'package:injectable/injectable.dart';
 
-
+@injectable
 class DetailsRepository {
   final FirebaseFirestore _firestore;
 

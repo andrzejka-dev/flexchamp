@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: state.users == null ? const AuthGate() : HomePage(currentUser: state.users!),);
+        home: state.user == null ? const AuthGate() : HomePage(currentUser: state.user!),);
         
         }
       ),

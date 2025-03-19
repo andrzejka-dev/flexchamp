@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'package:flexchamp/data/affirmation_remote_data_source.dart';
 import 'package:flexchamp/domain/models/affirmation_model.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class AffirmationRepository {
   AffirmationRepository(this.affirmationRemoteDataSource);
   
