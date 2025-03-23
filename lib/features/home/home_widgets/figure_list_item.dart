@@ -1,6 +1,7 @@
 import 'package:flexchamp/domain/models/figure_model.dart';
 import 'package:flexchamp/features/details/page/details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FigureListItem extends StatelessWidget {
   final FigureModel figureModel;
@@ -25,21 +26,64 @@ class FigureListItem extends StatelessWidget {
           ),
         ],
       ),
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 20.0,
-        ),
-        leading: FigureAvatar(imageUrl: figureModel.figureIcon ?? 'default_image_path.png'),
-        title: Text(
-          figureModel.title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 22.0,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(16.0),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16.0),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsPage(
+                  title: figureModel.title,
+                ),
+              ),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 16.0,
+            ),
+            child: Row(
+              children: [
+                // Larger avatar
+                FigureAvatar(imageUrl: figureModel.figureIcon ?? 'default_image_path.png'),
+                
+                const SizedBox(width: 20), // Add spacing between avatar and text
+                
+                // Title with expanded to take available space
+                  Expanded(
+                  child: Text(
+                    figureModel.title,
+                    style: GoogleFonts.montserrat(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 26.0,
+                      ),
+                    ),
+                  ),
+                ),
+                
+                // Arrow icon
+                Container(
+                  padding: const EdgeInsets.all(12.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withAlpha(51),
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: const Icon(
+                    Icons.arrow_circle_right,
+                    color: Colors.white,
+                    size: 36,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        trailing: DetailsButton(title: figureModel.title),
       ),
     );
   }
@@ -56,59 +100,28 @@ class FigureAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 40,
-      height: 40,
-      decoration: const BoxDecoration(
+      width: 70, // Increased from 40
+      height: 70, // Increased from 40
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
+        color: Colors.white.withAlpha(51), // Added background for better visibility
       ),
       clipBehavior: Clip.antiAlias,
       child: Image.network(
         imageUrl,
-        width: 40,
-        height: 40,
+        width: 70, // Increased from 40
+        height: 70, // Increased from 40
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
           return Container(
             color: Colors.grey.shade300,
-            child: const Icon(Icons.person, color: Colors.white),
+            child: const Icon(
+              Icons.person,
+              color: Colors.white,
+              size: 40, // Increased icon size for error state
+            ),
           );
         },
-      ),
-    );
-  }
-}
-
-class DetailsButton extends StatelessWidget {
-  final String title;
-  
-  const DetailsButton({
-    super.key,
-    required this.title,
-  });
-  
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DetailsPage(
-              title: title,
-            ),
-          ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.white.withAlpha(51),
-          borderRadius: BorderRadius.circular(12.0),
-        ),
-        child: const Icon(
-          Icons.arrow_circle_right,
-          color: Colors.white,
-        ),
       ),
     );
   }

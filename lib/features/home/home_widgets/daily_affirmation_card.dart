@@ -1,5 +1,6 @@
 import 'package:flexchamp/features/affirmation/page/affirmation_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DailyAffirmationCard extends StatelessWidget {
   const DailyAffirmationCard({super.key});
@@ -42,15 +43,15 @@ class DailyAffirmationCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16.0),
-            const Expanded(
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Daily Affirmations",
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 20,
                     ),
                   ),
