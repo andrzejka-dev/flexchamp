@@ -72,7 +72,7 @@ class DetailsSliverAppBar extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Color(0xFFA77CB2), // Fade from bottom
+                    Color(0xFF9D7BCA), 
                     Colors.transparent,
                   ],
                   stops: const [0.0, 0.5],
@@ -86,31 +86,3 @@ class DetailsSliverAppBar extends StatelessWidget {
   }
 }
 
-// class DetailsSliverAppBar extends StatelessWidget {
-//   final DetailModel figure;
-  
-//   const DetailsSliverAppBar({
-//     super.key,
-//     required this.figure,
-//   });
-  
-//   @override
-//   Widget build(BuildContext context) {
-//     return SliverAppBar(
-//       backgroundColor: Colors.transparent,
-//       expandedHeight: 180.0,
-//       floating: false,
-//       pinned: true,
-//       automaticallyImplyLeading: false,
-//       flexibleSpace: FlexibleSpaceBar(
-//         title: null,
-//         background: figure.photoURLs.isNotEmpty
-//             ? Image.network(
-//                 figure.photoURLs.first,
-//                 fit: BoxFit.cover,
-//               )
-//             : Container(color: Colors.purple.withAlpha(53)),
-//       ),
-//     );
-//   }
-// }

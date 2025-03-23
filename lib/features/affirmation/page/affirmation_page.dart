@@ -45,8 +45,9 @@ class _AffirmationPageState extends State<AffirmationPage> {
     return AppBar(
       title: Text(
         'Stay Inspired',
-        style: GoogleFonts.montserrat(
+        style: GoogleFonts.mulish(
           fontWeight: FontWeight.w600,
+          color: Colors.white,
           fontSize: 22,
         ),
       ),
@@ -84,7 +85,6 @@ class _AffirmationPageState extends State<AffirmationPage> {
                   onRetry: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
                 ),
                 
-                // Initial state or success with no affirmation
                 _ => AffirmationInitialView(
                   onGetInspired: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
                 ),
@@ -134,7 +134,6 @@ class _AffirmationPageState extends State<AffirmationPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     
-    // Update background colors based on the affirmation image
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_isMounted) {
         _updateBackgroundColors(state.affirmation!.imageUrl);
@@ -157,7 +156,6 @@ class _AffirmationPageState extends State<AffirmationPage> {
           
           NextAffirmationButton(
             onPressed: () {
-              // Reset background colors
               if (_isMounted) {
                 setState(() {
                   topColor = const Color(0xFF8563CF);

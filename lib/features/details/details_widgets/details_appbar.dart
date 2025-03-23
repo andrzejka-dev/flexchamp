@@ -19,7 +19,7 @@ class DetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 50, // Provide enough space for the arrow and text
       title: Text(
         title,
-        style: GoogleFonts.montserrat(
+        style: GoogleFonts.mulish(
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 28,

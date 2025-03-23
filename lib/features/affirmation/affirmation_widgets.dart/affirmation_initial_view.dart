@@ -1,4 +1,3 @@
-// lib/features/affirmation/widgets/affirmation_initial_view.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +23,7 @@ class AffirmationInitialView extends StatelessWidget {
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withAlpha(38), // 0.15 opacity
+              color: Colors.white.withAlpha(38), 
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -38,8 +37,8 @@ class AffirmationInitialView extends StatelessWidget {
           
           // Heading text
           Text(
-            'Get your daily dose of inspiration',
-            style: GoogleFonts.montserrat(
+            'Get your dose of inspiration',
+            style: GoogleFonts.inter(
               fontSize: 20,
               fontWeight: FontWeight.w600,
               color: Colors.white,
@@ -50,10 +49,10 @@ class AffirmationInitialView extends StatelessWidget {
           const SizedBox(height: 8),
           
           Text(
-            'Positive affirmations to brighten your day',
-            style: GoogleFonts.montserrat(
+            'Affirmations to keep you motivated',
+            style: GoogleFonts.inter(
               fontSize: 16,
-              color: Colors.white.withAlpha(204), // 0.8 opacity
+              color: Colors.white.withAlpha(204), 
             ),
             textAlign: TextAlign.center,
           ),
@@ -64,10 +63,10 @@ class AffirmationInitialView extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),
-              color: Colors.white.withAlpha(38), // 0.15 opacity
+              color: Colors.white.withAlpha(38), 
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withAlpha(26), // 0.1 opacity
+                  color: Colors.black.withAlpha(26), 
                   blurRadius: 10,
                   offset: const Offset(0, 5),
                 ),

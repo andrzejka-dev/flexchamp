@@ -20,10 +20,10 @@ class DetailsGradientBackground extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color.fromARGB(255, 121, 93, 165), // This specific shade you marked with the arrow
-                Color(0xFF9D7BCA), // Purple-lavender
-                Color(0xFFA77CB2), // Mid purple
-                Color(0xFFB683A8), // Pinkish purple
+                Color.fromARGB(255, 121, 93, 165), 
+                Color(0xFF9D7BCA), 
+                Color(0xFFA77CB2), 
+                Color(0xFFB683A8), 
                 Color(0xFFE9A8A2),
               ],
               stops: [0.0, 0.25, 0.5, 0.75, 1.0],
