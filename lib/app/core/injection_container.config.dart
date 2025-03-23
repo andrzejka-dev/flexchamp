@@ -14,6 +14,7 @@ import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flexchamp/app/core/firebase_module.dart' as _i921;
 import 'package:flexchamp/app/cubit/root_cubit.dart' as _i396;
 import 'package:flexchamp/data/affirmation_remote_data_source.dart' as _i380;
+import 'package:flexchamp/data/dio_module.dart' as _i373;
 import 'package:flexchamp/domain/repositories/affirmation_repository.dart'
     as _i819;
 import 'package:flexchamp/domain/repositories/details_repository.dart' as _i644;
@@ -37,11 +38,15 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final firebaseModule = _$FirebaseModule();
+    final appInfrastructureModule = _$AppInfrastructureModule();
     gh.factory<_i396.RootCubit>(() => _i396.RootCubit());
     gh.factory<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.factory<_i59.FirebaseAuth>(() => firebaseModule.auth);
+    gh.singleton<_i361.Dio>(() => appInfrastructureModule.dio);
     gh.factory<_i644.DetailsRepository>(() =>
         _i644.DetailsRepository(firestore: gh<_i974.FirebaseFirestore>()));
+    gh.factory<_i380.AffirmationRemoteRetrofitDataSource>(
+        () => _i380.AffirmationRemoteRetrofitDataSource(gh<_i361.Dio>()));
     gh.factory<_i735.DetailsCubit>(
         () => _i735.DetailsCubit(gh<_i644.DetailsRepository>()));
     gh.factory<_i258.FiguresRepository>(() => _i258.FiguresRepository(
@@ -50,11 +55,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i148.FigureCubit>(
         () => _i148.FigureCubit(gh<_i258.FiguresRepository>()));
-    gh.factory<_i380.AffirmationRemoteRetrofitDataSource>(
-        () => _i380.AffirmationRemoteRetrofitDataSource(
-              gh<_i361.Dio>(),
-              baseUrl: gh<String>(),
-            ));
     gh.factory<_i819.AffirmationRepository>(() => _i819.AffirmationRepository(
         gh<_i380.AffirmationRemoteRetrofitDataSource>()));
     gh.factory<_i519.AffirmationCubit>(
@@ -64,3 +64,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$FirebaseModule extends _i921.FirebaseModule {}
+
+class _$AppInfrastructureModule extends _i373.AppInfrastructureModule {}

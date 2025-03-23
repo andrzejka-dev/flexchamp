@@ -1,199 +1,173 @@
 import 'package:flexchamp/app/core/enums.dart';
+import 'package:flexchamp/features/affirmation/affirmation_widgets.dart/affirmation_page_widgets_extract.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_cubit.dart';
 import 'package:flexchamp/features/affirmation/cubit/affirmation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-
-class AffirmationPage extends StatelessWidget {
+class AffirmationPage extends StatefulWidget {
   const AffirmationPage({super.key});
+
+  @override
+  State<AffirmationPage> createState() => _AffirmationPageState();
+}
+
+class _AffirmationPageState extends State<AffirmationPage> {
+  Color topColor = (Color.fromARGB(255, 121, 93, 165)); 
+  Color bottomColor = const Color(0xFFE9A8A2); 
+  bool isLoadingPalette = false;
+  bool _isMounted = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _isMounted = true;
+  }
+
+  @override
+  void dispose() {
+    _isMounted = false;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Stay Inspired'),
-        centerTitle: true,
+      backgroundColor: Colors.transparent,
+      extendBodyBehindAppBar: true,
+      appBar: _buildAppBar(),
+      body: _buildBody(),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      title: Text(
+        'Stay Inspired',
+        style: GoogleFonts.montserrat(
+          fontWeight: FontWeight.w600,
+          fontSize: 22,
+        ),
       ),
-      body: BlocBuilder<AffirmationCubit, AffirmationState>(
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      iconTheme: const IconThemeData(color: Colors.white),
+    );
+  }
+
+  Widget _buildBody() {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 500),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            topColor,
+            bottomColor,
+          ],
+        ),
+      ),
+      child: BlocBuilder<AffirmationCubit, AffirmationState>(
         builder: (context, state) {
-          return Center(
-            child: switch (state.status) {
-              Status.loading => const CircularProgressIndicator(),
-              
-              Status.success when state.affirmation != null => Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        state.affirmation!.imageUrl,
-                        fit: BoxFit.cover,
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: MediaQuery.of(context).size.width * 0.8,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Center(
-                            child: CircularProgressIndicator(
-                              value: loadingProgress.expectedTotalBytes != null
-                                  ? loadingProgress.cumulativeBytesLoaded /
-                                      loadingProgress.expectedTotalBytes!
-                                  : null,
-                            ),
-                          );
-                        },
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            height: MediaQuery.of(context).size.width * 0.8,
-                            color: Colors.grey[200],
-                            child: const Center(
-                              child: Icon(
-                                Icons.error_outline,
-                                color: Colors.red,
-                                size: 50,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          context.read<AffirmationCubit>().fetchRandomAffirmation();
-                        },
-                        borderRadius: BorderRadius.circular(12),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 12,
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: const [
-                              Icon(Icons.refresh),
-                              SizedBox(width: 8),
-                              Text(
-                                'Next Affirmation',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+          return SafeArea(
+            child: Center(
+              child: switch (state.status) {
+                Status.loading => const AffirmationLoadingView(),
+                
+                Status.success when state.affirmation != null => _buildSuccessContent(context, state),
+                
+                Status.error => AffirmationErrorView(
+                  errorMessage: state.errorMessage,
+                  onRetry: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
                 ),
-              ),
-              
-              Status.error => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      'Error: ${state.errorMessage}',
-                      style: const TextStyle(color: Colors.red),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        context.read<AffirmationCubit>().fetchRandomAffirmation();
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 12,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(Icons.refresh),
-                            SizedBox(width: 8),
-                            Text(
-                              'Try Again',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              
-              // Initial state or success with no affirmation
-              _ => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Get your daily dose of inspiration',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 24),
-                  Card(
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        context.read<AffirmationCubit>().fetchRandomAffirmation();
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 24,
-                          vertical: 12,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Icon(Icons.lightbulb_outline),
-                            SizedBox(width: 8),
-                            Text(
-                              'Get Inspired',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            },
+                
+                // Initial state or success with no affirmation
+                _ => AffirmationInitialView(
+                  onGetInspired: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
+                ),
+              },
+            ),
           );
         },
+      ),
+    );
+  }
+
+  Future<void> _updateBackgroundColors(String imageUrl) async {
+    if (isLoadingPalette || !_isMounted) return;
+    
+    if (_isMounted) {
+      setState(() {
+        isLoadingPalette = true;
+      });
+    }
+    
+    try {
+      if (!_isMounted) return;
+      
+      final colors = await PaletteExtractorService.extractColorsFromImage(imageUrl);
+      
+      if (!_isMounted) return;
+      
+      if (_isMounted) {
+        setState(() {
+          topColor = colors[0];
+          bottomColor = colors[1];
+          isLoadingPalette = false;
+        });
+      }
+    } catch (e) {
+      if (_isMounted) {
+        setState(() {
+          topColor = const Color(0xFF8563CF);
+          bottomColor = const Color(0xFFE390BA);
+          isLoadingPalette = false;
+        });
+      }
+    }
+  }
+
+  Widget _buildSuccessContent(BuildContext context, AffirmationState state) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    
+    // Update background colors based on the affirmation image
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_isMounted) {
+        _updateBackgroundColors(state.affirmation!.imageUrl);
+      }
+    });
+    
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 20),
+          
+          AffirmationImageView(
+            imageUrl: state.affirmation!.imageUrl,
+            width: screenWidth * 0.85,
+            height: screenHeight * 0.65,
+          ),
+          
+          const Spacer(),
+          
+          NextAffirmationButton(
+            onPressed: () {
+              // Reset background colors
+              if (_isMounted) {
+                setState(() {
+                  topColor = const Color(0xFF8563CF);
+                  bottomColor = const Color(0xFFE390BA);
+                });
+              }
+              context.read<AffirmationCubit>().fetchRandomAffirmation();
+            },
+          ),
+        ],
       ),
     );
   }

@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                   child: Text(
                     "What's your focus today?",
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.mulish(
                       textStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 22,

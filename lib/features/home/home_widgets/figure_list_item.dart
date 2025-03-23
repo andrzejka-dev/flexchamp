@@ -60,8 +60,8 @@ class FigureListItem extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 26.0,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 22.0,
                       ),
                     ),
                   ),
@@ -100,8 +100,8 @@ class FigureAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 70, // Increased from 40
-      height: 70, // Increased from 40
+      width: 60, // Increased from 40
+      height: 60, // Increased from 40
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.white.withAlpha(51), // Added background for better visibility

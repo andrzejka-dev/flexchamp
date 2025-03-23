@@ -1,3 +1,4 @@
+// lib/data/affirmation_remote_data_source.dart
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -9,8 +10,9 @@ part 'affirmation_remote_data_source.g.dart';
 @RestApi(baseUrl: 'https://andrzejka-dev.github.io/Affirmations/')
 abstract class AffirmationRemoteRetrofitDataSource {
   @factoryMethod
-  factory AffirmationRemoteRetrofitDataSource(Dio dio, {String baseUrl}) = _AffirmationRemoteRetrofitDataSource;
+  factory AffirmationRemoteRetrofitDataSource(Dio dio) = 
+      _AffirmationRemoteRetrofitDataSource;
 
-@GET('/affirmations.json')
-Future<List<AffirmationModel>> getAffirmations();
+  @GET('/affirmations.json')
+  Future<List<AffirmationModel>> getAffirmations();
 }

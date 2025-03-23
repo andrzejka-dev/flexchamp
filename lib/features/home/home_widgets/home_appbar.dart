@@ -1,6 +1,7 @@
 import 'package:flexchamp/features/admin/storage_update_screen.dart';
 import 'package:flexchamp/features/auth/user_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isAdmin;
@@ -17,8 +18,9 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       title: Text(
         'Welcome to FlexChamp!',
-        style: const TextStyle(
+        style: GoogleFonts.mulish(
           color: Colors.white,
+          fontSize: 24,
           fontWeight: FontWeight.bold
         ),
       ),

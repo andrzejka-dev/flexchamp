@@ -39,7 +39,7 @@ class DailyAffirmationCard extends StatelessWidget {
               child: const Icon(
                 Icons.grade,
                 color: Colors.white,
-                size: 28,
+                size: 30,
               ),
             ),
             const SizedBox(width: 16.0),
@@ -51,16 +51,18 @@ class DailyAffirmationCard extends StatelessWidget {
                     "Daily Affirmations",
                     style: GoogleFonts.montserrat(
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       fontSize: 20,
                     ),
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    "Get inspired whenever you need it",
-                    style: TextStyle(
+                    "Stay inspired",
+                    style: GoogleFonts.inter(
                       color: Colors.white70,
                       fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                      fontStyle: FontStyle.italic
                     ),
                   ),
                 ],
@@ -75,6 +77,7 @@ class DailyAffirmationCard extends StatelessWidget {
               child: const Icon(
                 Icons.arrow_circle_right,
                 color: Colors.white,
+                size: 36,
               ),
             ),
           ],
