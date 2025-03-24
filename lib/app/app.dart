@@ -5,8 +5,6 @@ import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -28,16 +26,6 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
         title: 'Flexchamp',
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('en', ''),
-          Locale('pl', ''),
-        ],
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
