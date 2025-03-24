@@ -69,6 +69,12 @@ dev_dependencies:
   retrofit_generator: ^9.1.9
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
+  flutter_launcher_icons: ^0.14.3
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/flexchamp_login.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
