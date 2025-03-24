@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexchamp/app/core/injection_container.dart';
+import 'package:flexchamp/features/about/about_page.dart';
+import 'package:flexchamp/features/auth/user_profile.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/home_widgets/home_page_widgets_extract.dart';
 import 'package:flutter/material.dart';
@@ -44,18 +46,37 @@ class HomePage extends StatelessWidget {
                 
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: FigureListView(),
                   ),
                 ),
                 
                 Container(
-                  padding: const EdgeInsets.only(bottom: 50.0, left: 16.0, right: 16.0),
+                  padding: const EdgeInsets.only(bottom: 20.0, left: 10.0, right: 10.0),
                   child: DailyAffirmationCard(),
                 ),
               ],
             ),
           ),
+        ),
+        // Add the bottom navigation bar here
+        bottomNavigationBar: BottomNavBar(
+          currentUser: currentUser,
+          currentIndex: 0,
+          onProfileTap: (_) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => UserProfileScreen(),
+              ),
+            );
+          },
+          onAboutTap: (_) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AboutPage(),
+              ),
+            );
+          },
         ),
       ),
     );

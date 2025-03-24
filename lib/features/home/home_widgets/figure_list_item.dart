@@ -14,7 +14,7 @@ class FigureListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: BoxDecoration(
         color: Colors.white.withAlpha(51),
         borderRadius: BorderRadius.circular(16.0),
@@ -48,12 +48,10 @@ class FigureListItem extends StatelessWidget {
             ),
             child: Row(
               children: [
-                // Larger avatar
                 FigureAvatar(imageUrl: figureModel.figureIcon ?? 'default_image_path.png'),
                 
-                const SizedBox(width: 20), // Add spacing between avatar and text
+                const SizedBox(width: 20), 
                 
-                // Title with expanded to take available space
                   Expanded(
                   child: Text(
                     figureModel.title,
@@ -67,7 +65,6 @@ class FigureListItem extends StatelessWidget {
                   ),
                 ),
                 
-                // Arrow icon
                 Container(
                   padding: const EdgeInsets.all(12.0),
                   decoration: BoxDecoration(
