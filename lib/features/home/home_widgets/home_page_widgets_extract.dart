@@ -6,3 +6,4 @@ export 'loading_indicator.dart';
 export 'error_display.dart';
 export 'figure_list_item.dart';
 export 'bottom_nav_bar.dart';
+

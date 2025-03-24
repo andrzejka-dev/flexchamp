@@ -1,7 +1,8 @@
+import 'package:flexchamp/features/about/about_widgets/about_page_extract_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart'; // Add this package for launching URLs
-import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Add this package for social icons
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -17,21 +18,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 121, 93, 165),
-              Color(0xFF9D7BCA), // Purple-lavender
-              Color(0xFFA77CB2), // Mid purple
-              Color(0xFFB683A8), // Pinkish purple
-              Color(0xFFE9A8A2),
-            ],
-            stops: [0.0, 0.25, 0.5, 0.75, 1.0],
-          ),
-        ),
+      body: GradientBackground(
         child: SafeArea(
           child: Column(
             children: [
@@ -85,19 +72,14 @@ class AboutPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 30),
                         // App description
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withAlpha(51),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                        InfoContainer(
                           child: Text(
                             "Designed for all skill levels, our app helps you achieve dream gymnastics moves with proper technique and injury prevention in mind. The road to success has ups and downs, but powerful affirmations will keep you focused and unstoppable on your journey to become the FlexChamp.",
                             textAlign: TextAlign.center,
                             style: GoogleFonts.mulish(
                               textStyle: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 18,
+                                fontSize: 16,
                                 height: 1.5,
                               ),
                             ),
@@ -105,25 +87,20 @@ class AboutPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 40),
                         // Social Links Section
-                        Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withAlpha(51),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                        InfoContainer(
                           child: Column(
                             children: [
                               Text(
-                                "Our links:",
+                                "Find us on:",
                                 style: GoogleFonts.mulish(
                                   textStyle: const TextStyle(
                                     color: Colors.white,
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 14),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
@@ -131,7 +108,7 @@ class AboutPage extends StatelessWidget {
                                   SocialIconButton(
                                     icon: FontAwesomeIcons.xTwitter,
                                     label: 'X',
-                                    onTap: () => _launchUrl('https://x.com/yourhandle'),
+                                    onTap: () => _launchUrl('https://x.com/andrzejka_dev'),
                                   ),
                                   // Google Play icon
                                   SocialIconButton(
@@ -150,7 +127,7 @@ class AboutPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 20),
                         // Rate the app section
                       ],
                     ),
@@ -161,57 +138,6 @@ class AboutPage extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-// Custom widget for social icons with labels
-class SocialIconButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const SocialIconButton({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(35),
-          child: Container(
-            width: 70,
-            height: 70,
-            decoration: BoxDecoration(
-              color: Colors.white.withAlpha(51),
-              shape: BoxShape.circle,
-            ),
-            child: Center(
-              child: FaIcon(
-                icon,
-                color: Colors.white,
-                size: 32,
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: GoogleFonts.mulish(
-            textStyle: const TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

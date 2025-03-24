@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexchamp/app/core/injection_container.dart';
-import 'package:flexchamp/features/about/about_page.dart';
+import 'package:flexchamp/features/about/page/about_page.dart';
 import 'package:flexchamp/features/auth/user_profile.dart';
 import 'package:flexchamp/features/home/cubit/figure_cubit.dart';
 import 'package:flexchamp/features/home/home_widgets/home_page_widgets_extract.dart';

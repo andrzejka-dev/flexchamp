@@ -1,26 +1,26 @@
-import 'package:flutter/material.dart';
-import 'dart:math' show Random;
+import 'dart:math';
 
-class DetailsGradientBackground extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class GradientBackground extends StatelessWidget {
   final Widget child;
   
-  const DetailsGradientBackground({
+  const GradientBackground({
     super.key,
     required this.child,
   });
   
   @override
-  Widget build(BuildContext context) {
+   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Base gradient background that matches the header
         Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color.fromARGB(255, 121, 93, 165), 
+                Color.fromARGB(255, 121, 93, 165),
                 Color(0xFF9D7BCA), 
                 Color(0xFFA77CB2), 
                 Color(0xFFB683A8), 
@@ -31,13 +31,11 @@ class DetailsGradientBackground extends StatelessWidget {
           ),
         ),
         
-        // Starry background matching the header style
         CustomPaint(
           painter: StarryBackgroundPainter(),
           size: Size.infinite,
         ),
         
-        // Child content (exercise cards and other widgets)
         child,
       ],
     );
