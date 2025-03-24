@@ -1,4 +1,3 @@
-// lib/features/affirmation/widgets/affirmation_loading_view.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

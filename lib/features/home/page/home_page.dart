@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
                   child: Text(
-                    "What's your focus today?",
+                    "What's your goal today?",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.mulish(
                       textStyle: TextStyle(
@@ -59,7 +59,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        // Add the bottom navigation bar here
         bottomNavigationBar: BottomNavBar(
           currentUser: currentUser,
           currentIndex: 0,
