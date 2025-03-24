@@ -33,5 +33,6 @@ analyzer:
     - "**/*.gen.dart"
     - "**/*.freezed.dart"
     - "**/*.config.dart"
+    - "**/*.g.dart"
   errors:
     invalid_annotation_target: ignore

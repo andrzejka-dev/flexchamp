@@ -49,9 +49,10 @@ class AffirmationInitialView extends StatelessWidget {
           const SizedBox(height: 8),
           
           Text(
-            'Affirmations to keep you motivated',
+            '...to keep you on the right track',
             style: GoogleFonts.inter(
-              fontSize: 16,
+              fontSize: 12,
+              fontWeight: FontWeight.w300,
               color: Colors.white.withAlpha(204), 
             ),
             textAlign: TextAlign.center,

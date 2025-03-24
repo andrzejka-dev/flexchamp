@@ -1,14 +1,12 @@
+import 'package:flexchamp/app/core/config.dart';
 import 'package:flexchamp/features/admin/storage_update_screen.dart';
 import 'package:flexchamp/features/auth/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final bool isAdmin;
-  
   const HomeAppBar({
     super.key,
-    required this.isAdmin,
   });
   
   @override
@@ -16,8 +14,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      title: Text(
-        'Welcome to FlexChamp!',
+      title: Text(Config.helloMessage,
+        //'Welcome to FlexChamp!',
         style: GoogleFonts.mulish(
           color: Colors.white,
           fontSize: 24,
@@ -25,8 +23,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        // Admin button - only appears for admin users
-        if (isAdmin)
+        // Admin button
+        if (Config.isAdminEnabled)
           IconButton(
             onPressed: () {
               Navigator.of(context).push(

@@ -11,9 +11,6 @@ class HomePage extends StatelessWidget {
 
   const HomePage({super.key, required this.currentUser});
   
-  bool _isAdmin() {
-    return true;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +19,12 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
-        appBar: HomeAppBar(isAdmin: _isAdmin()),
+        appBar: HomeAppBar(),
         body: GradientBackground(
           child: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Add "What's your focus today?" text below app bar
                 Padding(
                   padding: EdgeInsets.fromLTRB(20, 16, 20, 16),
                   child: Text(
@@ -53,7 +49,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 
-                // Daily Affirmation Card
                 Container(
                   padding: const EdgeInsets.only(bottom: 50.0, left: 16.0, right: 16.0),
                   child: DailyAffirmationCard(),

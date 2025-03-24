@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "appTitle": "Flexchamp",
+  "@appTitle": {
+    "description": "The application title"
+  }
+}

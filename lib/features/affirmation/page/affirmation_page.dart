@@ -22,7 +22,7 @@ class AffirmationPage extends StatelessWidget {
   AppBar _buildAppBar() {
     return AppBar(
       title: Text(
-        'Stay Inspired',
+        'Affirmations',
         style: GoogleFonts.mulish(
           fontWeight: FontWeight.w600,
           color: Colors.white,

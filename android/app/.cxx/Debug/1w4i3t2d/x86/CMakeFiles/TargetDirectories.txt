@@ -1,0 +1,2 @@
+/Users/anna/Repositories/Flutter/flexchamp-1/android/app/.cxx/Debug/1w4i3t2d/x86/CMakeFiles/edit_cache.dir
+/Users/anna/Repositories/Flutter/flexchamp-1/android/app/.cxx/Debug/1w4i3t2d/x86/CMakeFiles/rebuild_cache.dir

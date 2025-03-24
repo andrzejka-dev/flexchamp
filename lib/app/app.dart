@@ -1,3 +1,4 @@
+import 'package:flexchamp/app/core/config.dart';
 import 'package:flexchamp/app/core/injection_container.dart';
 import 'package:flexchamp/app/cubit/root_cubit.dart';
 import 'package:flexchamp/features/auth/auth_gate.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
         title: 'Flexchamp',
+        debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
