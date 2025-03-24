@@ -19,6 +19,9 @@ mixin _$AffirmationState {
   AffirmationModel? get affirmation => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  List<Color> get gradientColors => throw _privateConstructorUsedError;
+  List<double> get gradientStops => throw _privateConstructorUsedError;
+  bool get isLoadingPalette => throw _privateConstructorUsedError;
 
   /// Create a copy of AffirmationState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +37,12 @@ abstract class $AffirmationStateCopyWith<$Res> {
       _$AffirmationStateCopyWithImpl<$Res, AffirmationState>;
   @useResult
   $Res call(
-      {AffirmationModel? affirmation, Status status, String errorMessage});
+      {AffirmationModel? affirmation,
+      Status status,
+      String errorMessage,
+      List<Color> gradientColors,
+      List<double> gradientStops,
+      bool isLoadingPalette});
 
   $AffirmationModelCopyWith<$Res>? get affirmation;
 }
@@ -57,6 +65,9 @@ class _$AffirmationStateCopyWithImpl<$Res, $Val extends AffirmationState>
     Object? affirmation = freezed,
     Object? status = null,
     Object? errorMessage = null,
+    Object? gradientColors = null,
+    Object? gradientStops = null,
+    Object? isLoadingPalette = null,
   }) {
     return _then(_value.copyWith(
       affirmation: freezed == affirmation
@@ -71,6 +82,18 @@ class _$AffirmationStateCopyWithImpl<$Res, $Val extends AffirmationState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      gradientColors: null == gradientColors
+          ? _value.gradientColors
+          : gradientColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
+      gradientStops: null == gradientStops
+          ? _value.gradientStops
+          : gradientStops // ignore: cast_nullable_to_non_nullable
+              as List<double>,
+      isLoadingPalette: null == isLoadingPalette
+          ? _value.isLoadingPalette
+          : isLoadingPalette // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -98,7 +121,12 @@ abstract class _$$AffirmationStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {AffirmationModel? affirmation, Status status, String errorMessage});
+      {AffirmationModel? affirmation,
+      Status status,
+      String errorMessage,
+      List<Color> gradientColors,
+      List<double> gradientStops,
+      bool isLoadingPalette});
 
   @override
   $AffirmationModelCopyWith<$Res>? get affirmation;
@@ -120,6 +148,9 @@ class __$$AffirmationStateImplCopyWithImpl<$Res>
     Object? affirmation = freezed,
     Object? status = null,
     Object? errorMessage = null,
+    Object? gradientColors = null,
+    Object? gradientStops = null,
+    Object? isLoadingPalette = null,
   }) {
     return _then(_$AffirmationStateImpl(
       affirmation: freezed == affirmation
@@ -134,6 +165,18 @@ class __$$AffirmationStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      gradientColors: null == gradientColors
+          ? _value._gradientColors
+          : gradientColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
+      gradientStops: null == gradientStops
+          ? _value._gradientStops
+          : gradientStops // ignore: cast_nullable_to_non_nullable
+              as List<double>,
+      isLoadingPalette: null == isLoadingPalette
+          ? _value.isLoadingPalette
+          : isLoadingPalette // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -142,7 +185,20 @@ class __$$AffirmationStateImplCopyWithImpl<$Res>
 
 class _$AffirmationStateImpl implements _AffirmationState {
   const _$AffirmationStateImpl(
-      {this.affirmation, this.status = Status.initial, this.errorMessage = ''});
+      {this.affirmation,
+      this.status = Status.initial,
+      this.errorMessage = '',
+      final List<Color> gradientColors = const [
+        Color.fromARGB(255, 121, 93, 165),
+        Color(0xFF9D7BCA),
+        Color(0xFFA77CB2),
+        Color(0xFFB683A8),
+        Color(0xFFE9A8A2)
+      ],
+      final List<double> gradientStops = const [0.0, 0.25, 0.5, 0.75, 1.0],
+      this.isLoadingPalette = false})
+      : _gradientColors = gradientColors,
+        _gradientStops = gradientStops;
 
   @override
   final AffirmationModel? affirmation;
@@ -152,10 +208,31 @@ class _$AffirmationStateImpl implements _AffirmationState {
   @override
   @JsonKey()
   final String errorMessage;
+  final List<Color> _gradientColors;
+  @override
+  @JsonKey()
+  List<Color> get gradientColors {
+    if (_gradientColors is EqualUnmodifiableListView) return _gradientColors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_gradientColors);
+  }
+
+  final List<double> _gradientStops;
+  @override
+  @JsonKey()
+  List<double> get gradientStops {
+    if (_gradientStops is EqualUnmodifiableListView) return _gradientStops;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_gradientStops);
+  }
+
+  @override
+  @JsonKey()
+  final bool isLoadingPalette;
 
   @override
   String toString() {
-    return 'AffirmationState(affirmation: $affirmation, status: $status, errorMessage: $errorMessage)';
+    return 'AffirmationState(affirmation: $affirmation, status: $status, errorMessage: $errorMessage, gradientColors: $gradientColors, gradientStops: $gradientStops, isLoadingPalette: $isLoadingPalette)';
   }
 
   @override
@@ -167,12 +244,24 @@ class _$AffirmationStateImpl implements _AffirmationState {
                 other.affirmation == affirmation) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            const DeepCollectionEquality()
+                .equals(other._gradientColors, _gradientColors) &&
+            const DeepCollectionEquality()
+                .equals(other._gradientStops, _gradientStops) &&
+            (identical(other.isLoadingPalette, isLoadingPalette) ||
+                other.isLoadingPalette == isLoadingPalette));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, affirmation, status, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      affirmation,
+      status,
+      errorMessage,
+      const DeepCollectionEquality().hash(_gradientColors),
+      const DeepCollectionEquality().hash(_gradientStops),
+      isLoadingPalette);
 
   /// Create a copy of AffirmationState
   /// with the given fields replaced by the non-null parameter values.
@@ -188,7 +277,10 @@ abstract class _AffirmationState implements AffirmationState {
   const factory _AffirmationState(
       {final AffirmationModel? affirmation,
       final Status status,
-      final String errorMessage}) = _$AffirmationStateImpl;
+      final String errorMessage,
+      final List<Color> gradientColors,
+      final List<double> gradientStops,
+      final bool isLoadingPalette}) = _$AffirmationStateImpl;
 
   @override
   AffirmationModel? get affirmation;
@@ -196,6 +288,12 @@ abstract class _AffirmationState implements AffirmationState {
   Status get status;
   @override
   String get errorMessage;
+  @override
+  List<Color> get gradientColors;
+  @override
+  List<double> get gradientStops;
+  @override
+  bool get isLoadingPalette;
 
   /// Create a copy of AffirmationState
   /// with the given fields replaced by the non-null parameter values.

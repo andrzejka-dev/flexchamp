@@ -57,10 +57,10 @@ class DailyAffirmationCard extends StatelessWidget {
                   ),
                   SizedBox(height: 4.0),
                   Text(
-                    "Stay inspired",
+                    "Stay inspired to reach your goals",
                     style: GoogleFonts.inter(
                       color: Colors.white70,
-                      fontSize: 14,
+                      fontSize: 12,
                       fontWeight: FontWeight.w300,
                       fontStyle: FontStyle.italic
                     ),

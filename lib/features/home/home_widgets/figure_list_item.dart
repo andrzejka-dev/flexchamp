@@ -77,7 +77,7 @@ class FigureListItem extends StatelessWidget {
                   child: const Icon(
                     Icons.arrow_circle_right,
                     color: Colors.white,
-                    size: 36,
+                    size: 32,
                   ),
                 ),
               ],
@@ -100,17 +100,17 @@ class FigureAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 60, // Increased from 40
-      height: 60, // Increased from 40
+      width: 60, 
+      height: 60, 
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white.withAlpha(51), // Added background for better visibility
+        color: Colors.white.withAlpha(51), 
       ),
       clipBehavior: Clip.antiAlias,
       child: Image.network(
         imageUrl,
-        width: 70, // Increased from 40
-        height: 70, // Increased from 40
+        width: 70, 
+        height: 70, 
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) {
           return Container(
@@ -118,7 +118,7 @@ class FigureAvatar extends StatelessWidget {
             child: const Icon(
               Icons.person,
               color: Colors.white,
-              size: 40, // Increased icon size for error state
+              size: 40, 
             ),
           );
         },

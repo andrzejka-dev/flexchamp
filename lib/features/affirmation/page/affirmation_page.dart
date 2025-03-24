@@ -6,30 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AffirmationPage extends StatefulWidget {
+class AffirmationPage extends StatelessWidget {
   const AffirmationPage({super.key});
-
-  @override
-  State<AffirmationPage> createState() => _AffirmationPageState();
-}
-
-class _AffirmationPageState extends State<AffirmationPage> {
-  Color topColor = (Color.fromARGB(255, 121, 93, 165)); 
-  Color bottomColor = const Color(0xFFE9A8A2); 
-  bool isLoadingPalette = false;
-  bool _isMounted = true;
-
-  @override
-  void initState() {
-    super.initState();
-    _isMounted = true;
-  }
-
-  @override
-  void dispose() {
-    _isMounted = false;
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,86 +37,41 @@ class _AffirmationPageState extends State<AffirmationPage> {
   }
 
   Widget _buildBody() {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            topColor,
-            bottomColor,
-          ],
-        ),
-      ),
-      child: BlocBuilder<AffirmationCubit, AffirmationState>(
-        builder: (context, state) {
-          return SafeArea(
+    return BlocBuilder<AffirmationCubit, AffirmationState>(
+      builder: (context, state) {
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: state.gradientColors,
+              stops: state.gradientStops,
+            ),
+          ),
+          child: SafeArea(
             child: Center(
               child: switch (state.status) {
                 Status.loading => const AffirmationLoadingView(),
-                
                 Status.success when state.affirmation != null => _buildSuccessContent(context, state),
-                
                 Status.error => AffirmationErrorView(
                   errorMessage: state.errorMessage,
                   onRetry: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
                 ),
-                
                 _ => AffirmationInitialView(
                   onGetInspired: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
                 ),
               },
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
-  }
-
-  Future<void> _updateBackgroundColors(String imageUrl) async {
-    if (isLoadingPalette || !_isMounted) return;
-    
-    if (_isMounted) {
-      setState(() {
-        isLoadingPalette = true;
-      });
-    }
-    
-    try {
-      if (!_isMounted) return;
-      
-      final colors = await PaletteExtractorService.extractColorsFromImage(imageUrl);
-      
-      if (!_isMounted) return;
-      
-      if (_isMounted) {
-        setState(() {
-          topColor = colors[0];
-          bottomColor = colors[1];
-          isLoadingPalette = false;
-        });
-      }
-    } catch (e) {
-      if (_isMounted) {
-        setState(() {
-          topColor = const Color(0xFF8563CF);
-          bottomColor = const Color(0xFFE390BA);
-          isLoadingPalette = false;
-        });
-      }
-    }
   }
 
   Widget _buildSuccessContent(BuildContext context, AffirmationState state) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_isMounted) {
-        _updateBackgroundColors(state.affirmation!.imageUrl);
-      }
-    });
     
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -155,15 +88,7 @@ class _AffirmationPageState extends State<AffirmationPage> {
           const Spacer(),
           
           NextAffirmationButton(
-            onPressed: () {
-              if (_isMounted) {
-                setState(() {
-                  topColor = const Color(0xFF8563CF);
-                  bottomColor = const Color(0xFFE390BA);
-                });
-              }
-              context.read<AffirmationCubit>().fetchRandomAffirmation();
-            },
+            onPressed: () => context.read<AffirmationCubit>().fetchRandomAffirmation(),
           ),
         ],
       ),
