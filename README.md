@@ -1,16 +1,18 @@
-# flexchamp
+✨ FlexChamp
 
-A new Flutter project.
+  🌟 Created and developed by a gymnastics enthusiast to inspire others to embrace a healthy lifestyle! 🌟
 
-## Getting Started
+  Bob Harper once said- "You're only as young as your spine is flexible." And I think he couldn't be more right.. right?
 
-This project is a starting point for a Flutter application.
+  Become the FlexChamp from any place in the world at any age or advance level. No gym? No problem. Get prepared before entering advanced forms like bridge or 
+  split with begginer and pro friendly exercises, focused on technique ✨
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🎯 Features
+
+  ✨Goal-Based Workouts: Choose from Bridge, Middle Split, or Split-focused routines.
+
+  ✨Daily Affirmations: Stay motivated with empowering affirmations every day.
+
+  ✨User-Friendly Interface: Enjoy a clean, calming design to keep you focused.
