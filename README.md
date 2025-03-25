@@ -1,6 +1,6 @@
 # ✨ **FlexChamp**
 
-FlexChamp is a comprehensive flexibility training app designed for gymnasts of all skill levels. Master dream gymnastics moves with proper technique, prevent injuries, and watch your progress along the way.
+FlexChamp is a comprehensive flexibility training app designed for gymnasts of all skill levels. Master dream gymnastics moves with proper technique to prevent injuries, and watch your progress along the way.
 
 > *"You're only as young as your spine is flexible."*  
 > — Bob Harper
@@ -27,7 +27,7 @@ Motivational quotes and mindfulness reminders to keep you inspired and mentally 
 </p>
 
 ### **User-Friendly Interface**  
-Clean, intuitive design that helps you focus on what matters—your training.  
+Clean, intuitive design that helps you focus on what matters— your goals.  
 
 ---
 
