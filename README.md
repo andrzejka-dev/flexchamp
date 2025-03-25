@@ -1,18 +1,24 @@
 ✨ FlexChamp
 
-  🌟 Created and developed by a gymnastics enthusiast to inspire others to embrace a healthy lifestyle! 🌟
+🌟 Developed and designed for all skill levels to help you achieve dream gymnastics moves with proper technique and prevent injuries. 
+  The road to success has ups and downs, but powerful affirmations will keep you focused and unstoppable on your journey.
 
   Bob Harper once said: "You're only as young as your spine is flexible." And who wouldn't like to stay young.. right?
 
-  Become the FlexChamp from any place in the world at any age or advance level. No gym nearby? Your room is more than enough. Get prepared before entering advanced 
-  forms like bridge or split with begginer and pro friendly exercises, focused on technique ✨
 
 
-
-🎯 Features
+🌟 Features
 
   ✨Goal-Based Workouts: Choose from Bridge, Middle Split, or Split-focused routines.
 
-  ✨Daily Affirmations: Stay motivated with empowering affirmations every day.
+  ✨Daily Affirmations: Motivational quotes to keep users inspired and focused.
 
-  ✨User-Friendly Interface: Enjoy a clean, calming design to keep you focused.
+  ✨User-Friendly Interface: Clean design with intuitive navigation.
+
+🌟 Contact
+Find us on:
+- X (Twitter): @andrzejka_dev
+- Email: a.andrzejewska96@gmail.com
+
+🌟 License
+- Proprietary License - "©2025 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
