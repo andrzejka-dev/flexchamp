@@ -29,13 +29,16 @@ User-Friendly Interface: Clean, intuitive design that helps you focus on what ma
 📱 Getting Started
 
 Download FlexChamp from the App Store or Google Play
+
 Create your profile and select your primary flexibility goals
 
 
 📧 Contact
 
 X (Twitter): @andrzejka_dev
+
 Email: a.andrzejewska96@gmail.com
 
 📄 License
+
 Proprietary License - "©2025 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
