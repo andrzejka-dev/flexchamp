@@ -26,6 +26,8 @@ Daily Affirmations: Motivational quotes and mindfulness reminders to keep you in
 
 User-Friendly Interface: Clean, intuitive design that helps you focus on what matters - your training
 
+
+
 🔧 Technical Stack
 
 Data Sources
@@ -34,6 +36,8 @@ GitHub-hosted API: Provides daily motivational affirmations content
 
 
 Firebase: Delivers training content and manages user data
+
+
 
 📱 Getting Started
 
@@ -47,6 +51,7 @@ Create your profile and select your primary flexibility goals
 X (Twitter): @andrzejka_dev
 
 Email: a.andrzejewska96@gmail.com
+
 
 📄 License
 
