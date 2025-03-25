@@ -3,7 +3,7 @@ FlexChamp is a comprehensive flexibility training app designed for gymnasts of a
 
 "You're only as young as your spine is flexible." - Bob Harper
 
-![FlexChamp](https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/content.gif)
+![FlexChamp](https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif2.gif)
 
 🌟 Features
 
@@ -16,7 +16,7 @@ Progressive difficulty levels for each goal
 
 Daily Affirmations: Motivational quotes and mindfulness reminders to keep you inspired and mentally strong
 
-![image](https://github.com/user-attachments/assets/a5f74f77-5a14-42c9-bfac-54a9538d3417)
+![image](https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif1.gif)
 
 
 User-Friendly Interface: Clean, intuitive design that helps you focus on what matters - your training
