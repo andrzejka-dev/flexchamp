@@ -45,18 +45,15 @@ class GradientBackground extends StatelessWidget {
 class StarryBackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final random = Random(42); // Fixed seed for consistent stars
+    final random = Random(42); 
     final starPaint = Paint();
     
-    // Draw approximately 120 stars with varying sizes (more stars for a richer effect)
     for (int i = 0; i < 120; i++) {
       final x = random.nextDouble() * size.width;
       final y = random.nextDouble() * size.height;
-      final radius = random.nextDouble() * 0.8 + 0.2; // Between 0.2 and 1.0
+      final radius = random.nextDouble() * 0.8 + 0.2; 
       
-      // Set star color with alpha for transparency
-      // Making some stars brighter to match the header look
-      final alphaValue = (random.nextDouble() * 0.4 + 0.05) * 255; // Convert to alpha value
+      final alphaValue = (random.nextDouble() * 0.4 + 0.05) * 255; 
       starPaint.color = Colors.white.withAlpha(alphaValue.toInt());
       canvas.drawCircle(Offset(x, y), radius, starPaint);
     }

@@ -23,7 +23,6 @@ class FigureCubit extends Cubit<FigureState> {
       },
     )..onError(
         (error) {
-          // Emit error state with error message
           emit(FigureState(
             status: Status.error,
             errorMessage: error.toString(),

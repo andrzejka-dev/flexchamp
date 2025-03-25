@@ -7,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
 
-  // Function to launch URLs when icons are tapped
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
@@ -26,7 +25,7 @@ class AboutPage extends StatelessWidget {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 title: Text(
-                  'About the app',
+                  'About',
                   style: GoogleFonts.mulish(
                     textStyle: const TextStyle(
                       color: Colors.white,
@@ -110,13 +109,11 @@ class AboutPage extends StatelessWidget {
                                     label: 'X',
                                     onTap: () => _launchUrl('https://x.com/andrzejka_dev'),
                                   ),
-                                  // Google Play icon
                                   SocialIconButton(
                                     icon: FontAwesomeIcons.googlePlay,
                                     label: 'Google Play',
                                     onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=your.package.name'),
                                   ),
-                                  // App Store icon
                                   SocialIconButton(
                                     icon: FontAwesomeIcons.appStore,
                                     label: 'App Store',
@@ -128,7 +125,6 @@ class AboutPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        // Rate the app section
                       ],
                     ),
                   ),

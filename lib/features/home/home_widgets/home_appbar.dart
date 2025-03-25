@@ -15,7 +15,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Text(Config.helloMessage,
-        //'Welcome to FlexChamp!',
         style: GoogleFonts.mulish(
           color: Colors.white,
           fontSize: 24,
@@ -36,7 +35,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: const Icon(Icons.admin_panel_settings, color: Colors.white),
             tooltip: 'Admin Tools',
           ),
-        // User profile button
         IconButton(
           onPressed: () {
             Navigator.of(context).push(

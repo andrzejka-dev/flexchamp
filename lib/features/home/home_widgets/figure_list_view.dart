@@ -5,10 +5,9 @@ import 'package:flexchamp/features/home/home_widgets/home_page_widgets_extract.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class FigureListView extends StatelessWidget {
   const FigureListView({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FigureCubit, FigureState>(
@@ -17,7 +16,7 @@ class FigureListView extends StatelessWidget {
           case Status.initial:
           case Status.loading:
             return const LoadingIndicator();
-            
+
           case Status.success:
             if (state.figures.isEmpty) {
               return const Center(
@@ -34,9 +33,10 @@ class FigureListView extends StatelessWidget {
                 return FigureListItem(figureModel: figureModel);
               },
             );
-            
+
           case Status.error:
-            return ErrorDisplay(errorMessage: state.errorMessage ?? 'Unknown error');
+            return ErrorDisplay(
+                errorMessage: state.errorMessage ?? 'Unknown error');
         }
       },
     );

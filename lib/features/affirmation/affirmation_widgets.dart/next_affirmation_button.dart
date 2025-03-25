@@ -1,4 +1,3 @@
-// lib/features/affirmation/widgets/next_affirmation_button.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,10 +15,10 @@ class NextAffirmationButton extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 32),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(32),
-        color: Colors.white.withAlpha(38), // 0.15 opacity
+        color: Colors.white.withAlpha(38), 
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(26), // 0.1 opacity
+            color: Colors.black.withAlpha(26), 
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),

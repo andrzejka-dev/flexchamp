@@ -8,10 +8,11 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class AffirmationCubit extends Cubit<AffirmationState> {
-  AffirmationCubit(this.affirmationRepository) : super(const AffirmationState());
-  
+  AffirmationCubit(this.affirmationRepository)
+      : super(const AffirmationState());
+
   final AffirmationRepository affirmationRepository;
-  
+
   // Default gradient colors
   static const List<Color> defaultGradientColors = [
     Color.fromARGB(255, 121, 93, 165),
@@ -20,23 +21,20 @@ class AffirmationCubit extends Cubit<AffirmationState> {
     Color(0xFFB683A8),
     Color(0xFFE9A8A2),
   ];
-  
-  // Default gradient stops
+
   static const List<double> defaultGradientStops = [0.0, 0.25, 0.5, 0.75, 1.0];
-  
+
   Future<void> fetchRandomAffirmation() async {
-    // Enter loading state
     emit(
       const AffirmationState(
         status: Status.loading,
       ),
     );
-    
+
     try {
       final affirmation = await affirmationRepository.getRandomAffirmation();
-      
+
       if (affirmation == null) {
-        // Emit error state
         emit(
           const AffirmationState(
             status: Status.error,
@@ -45,19 +43,15 @@ class AffirmationCubit extends Cubit<AffirmationState> {
         );
         return;
       }
-      
-      // Emit success state
+
       emit(
         AffirmationState(
           status: Status.success,
           affirmation: affirmation,
         ),
       );
-      
-      // Start extracting colors after emitting success state
       _updateGradientColors(affirmation.imageUrl);
     } catch (error) {
-      // Emit error state with the error message
       emit(
         AffirmationState(
           status: Status.error,
@@ -66,10 +60,10 @@ class AffirmationCubit extends Cubit<AffirmationState> {
       );
     }
   }
-  
+
   Future<void> _updateGradientColors(String imageUrl) async {
     if (state.isLoadingPalette) return;
-    
+
     // Set palette loading state
     emit(
       AffirmationState(
@@ -79,19 +73,20 @@ class AffirmationCubit extends Cubit<AffirmationState> {
         isLoadingPalette: true,
       ),
     );
-    
+
     try {
-      final colors = await PaletteExtractorService.extractColorsFromImage(imageUrl);
-      
-      // Create a new gradient based on extracted colors
+      final colors =
+          await PaletteExtractorService.extractColorsFromImage(imageUrl);
+
+      // Create a new gradient
       final List<Color> newGradient = [
-        colors[0],                                   // Start with the first extracted color
-        Color.lerp(colors[0], colors[1], 0.25)!,     // 25% blend
-        Color.lerp(colors[0], colors[1], 0.5)!,      // 50% blend
-        Color.lerp(colors[0], colors[1], 0.75)!,     // 75% blend
-        colors[1],                                   // End with the second extracted color
+        colors[0],
+        Color.lerp(colors[0], colors[1], 0.25)!,
+        Color.lerp(colors[0], colors[1], 0.5)!,
+        Color.lerp(colors[0], colors[1], 0.75)!,
+        colors[1],
       ];
-      
+
       // Set new colors
       emit(
         AffirmationState(

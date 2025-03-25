@@ -16,7 +16,7 @@ class DetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       automaticallyImplyLeading: false,
       leading: BackButton(),
-      leadingWidth: 50, // Provide enough space for the arrow and text
+      leadingWidth: 50, 
       title: Text(
         title,
         style: GoogleFonts.mulish(

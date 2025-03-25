@@ -1,4 +1,3 @@
-// lib/features/affirmation/widgets/affirmation_error_view.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,12 +20,11 @@ class AffirmationErrorView extends StatelessWidget {
         children: [
           const SizedBox(height: 60),
           
-          // Error icon with animation
           Container(
             width: 80,
             height: 80,
             decoration: BoxDecoration(
-              color: Colors.white.withAlpha(38), // 0.15 opacity
+              color: Colors.white.withAlpha(38), 
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -37,8 +35,7 @@ class AffirmationErrorView extends StatelessWidget {
           ),
           
           const SizedBox(height: 24),
-          
-          // Error message
+
           Text(
             'Could not load affirmation',
             style: GoogleFonts.montserrat(
@@ -54,7 +51,7 @@ class AffirmationErrorView extends StatelessWidget {
             errorMessage,
             style: GoogleFonts.montserrat(
               fontSize: 16,
-              color: Colors.white.withAlpha(204), // 0.8 opacity
+              color: Colors.white.withAlpha(204),
             ),
             textAlign: TextAlign.center,
           ),
@@ -65,7 +62,7 @@ class AffirmationErrorView extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),
-              color: Colors.white.withAlpha(38), // 0.15 opacity
+              color: Colors.white.withAlpha(38), 
             ),
             child: Material(
               color: Colors.transparent,

@@ -17,21 +17,20 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Create a container with the same gradient as your background
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          colors: [Color(0xFFE9A8A2), Color(0xFFF5B8C1)],  // Adjust these colors to match your app's gradient
+          colors: [Color(0xFFE9A8A2), Color(0xFFF5B8C1)], 
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
       ),
       child: BottomNavigationBar(
-        backgroundColor: Colors.transparent,  // Make BottomNavigationBar transparent to show gradient
+        backgroundColor: Colors.transparent, 
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
-        elevation: 0,  // Remove shadow
+        elevation: 0,  
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
           if (index == 1) {

@@ -18,7 +18,6 @@ class AffirmationInitialView extends StatelessWidget {
         children: [
           const SizedBox(height: 60),
           
-          // Inspirational icon
           Container(
             width: 80,
             height: 80,
@@ -35,7 +34,6 @@ class AffirmationInitialView extends StatelessWidget {
           
           const SizedBox(height: 24),
           
-          // Heading text
           Text(
             'Get your dose of inspiration',
             style: GoogleFonts.inter(
@@ -60,7 +58,6 @@ class AffirmationInitialView extends StatelessWidget {
           
           const SizedBox(height: 40),
           
-          // Get inspired button
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),

@@ -1,4 +1,3 @@
-// lib/features/affirmation/widgets/affirmation_image_view.dart
 import 'package:flutter/material.dart';
 
 class AffirmationImageView extends StatelessWidget {
@@ -20,7 +19,7 @@ class AffirmationImageView extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withAlpha(51), // 0.2 opacity
+            color: Colors.black.withAlpha(51), 
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -38,7 +37,7 @@ class AffirmationImageView extends StatelessWidget {
             return Container(
               width: width,
               height: height,
-              color: Colors.white.withAlpha(26), // 0.1 opacity
+              color: Colors.white.withAlpha(26), 
               child: Center(
                 child: CircularProgressIndicator(
                   value: loadingProgress.expectedTotalBytes != null
@@ -55,7 +54,7 @@ class AffirmationImageView extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                color: Colors.white.withAlpha(38), // 0.15 opacity
+                color: Colors.white.withAlpha(38), 
                 borderRadius: BorderRadius.circular(16),
               ),
               child: const Center(

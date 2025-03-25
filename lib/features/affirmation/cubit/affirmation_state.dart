@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flexchamp/app/core/enums.dart';
 import 'package:flexchamp/domain/models/affirmation_model.dart';

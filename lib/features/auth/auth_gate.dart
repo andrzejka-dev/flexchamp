@@ -10,10 +10,8 @@ class AuthGate extends StatelessWidget {
 Widget build(BuildContext context) {
   return StreamBuilder<User?>(
     stream: FirebaseAuth.instance.authStateChanges(),
-    //if the user is already signed-in, use it as initial data
     initialData: FirebaseAuth.instance.currentUser,
     builder:(context, snapshot) {
-      //user is not signed in
       if (!snapshot.hasData) {
       return SignInScreen(
       providers: [
@@ -23,7 +21,7 @@ Widget build(BuildContext context) {
               return Padding(
                 padding: const EdgeInsets.only(top: 2.0, bottom: 2.0),
                 child: Image.asset(
-                  'images/flexchamp_login.png', // Replace with your actual logo path
+                  'images/flexchamp_login.png', 
                   width: 200,
                   height: 200,
                 ),
@@ -31,10 +29,7 @@ Widget build(BuildContext context) {
             },
           );
         }
-    //SignInScreen
 
-
-    //Render your application if authenticated
     return HomePage(
       currentUser: snapshot.data!,);
     },
