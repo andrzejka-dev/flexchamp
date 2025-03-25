@@ -1,29 +1,44 @@
-# FlexChamp
+✨ FlexChamp
 
-## About
-FlexChamp is a mobile application designed to help users achieve their gymnastics and flexibility goals with proper technique and injury prevention in mind. The app caters to all skill levels, providing guided exercises, routines, and motivational content.
+FlexChamp is a comprehensive flexibility training app designed for gymnasts of all skill levels. Master dream gymnastics moves with proper technique, prevent injuries and watch your progress along the way.
 
-## Features
-- **Flexibility Training**: Various exercises preparind for Bridge, Middle Split, and Split
-- **Guided Instructions**: Step-by-step instructions for each exercise
-- **Daily Affirmations**: Motivational quotes to keep users inspired and focused
-- **User-Friendly Interface**: Clean design with intuitive navigation
+"You're only as young as your spine is flexible." - Bob Harper
 
-## Technical Information
-- Version: 1.0
-- Platforms: iOS (App Store) and Android (Google Play)
-- Requires: [List any system requirements or dependencies]
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif2.gif">
+</p>
 
-## Installation
-Download FlexChamp from:
-- [App Store](https://apps.apple.com/us/app/flexchamp)
-- [Google Play](https://play.google.com/store/apps/details?id=com.flexchamp)
+🌟 Features
+
+Goal-Based Workouts: Training routines focused on specific achievements:
+
+Bridge development
+Middle split progression
+Front and side splits mastery
+Progressive difficulty levels for each goal
+
+Daily Affirmations: Motivational quotes and mindfulness reminders to keep you inspired and mentally strong
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif1.gif">
+</p>
 
 
-## Contact
-Find us on:
-- X (Twitter): @andrzejka_dev
-- Email: a.andrzejewska96@gmail.com
+User-Friendly Interface: Clean, intuitive design that helps you focus on what matters - your training
 
-## License
-- Proprietary License - "© 2024 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
+📱 Getting Started
+
+Download FlexChamp from the App Store or Google Play
+
+Create your profile and select your primary flexibility goals
+
+
+📧 Contact
+
+X (Twitter): @andrzejka_dev
+
+Email: a.andrzejewska96@gmail.com
+
+📄 License
+
+Proprietary License - "©2025 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
