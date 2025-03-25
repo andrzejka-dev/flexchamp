@@ -1,24 +1,36 @@
 ✨ FlexChamp
+FlexChamp is a comprehensive flexibility training app designed for gymnasts of all skill levels. Master dream gymnastics moves with proper technique, prevent injuries, and watch your progress along the way.
 
-🌟 Developed and designed for all skill levels to help you achieve dream gymnastics moves with proper technique and prevent injuries. 
-  The road to success has ups and downs, but powerful affirmations will keep you focused and unstoppable on your journey.
+"You're only as young as your spine is flexible." - Bob Harper
 
-  Bob Harper once said: "You're only as young as your spine is flexible." And who wouldn't like to stay young.. right?
-
-
+![FlexChamp](https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/content.gif)
 
 🌟 Features
 
-  ✨Goal-Based Workouts: Choose from Bridge, Middle Split, or Split-focused routines.
+Goal-Based Workouts: Training routines focused on specific achievements:
 
-  ✨Daily Affirmations: Motivational quotes to keep users inspired and focused.
+Bridge development
+Middle split progression
+Front and side splits mastery
+Progressive difficulty levels for each goal
 
-  ✨User-Friendly Interface: Clean design with intuitive navigation.
+Daily Affirmations: Motivational quotes and mindfulness reminders to keep you inspired and mentally strong
 
-🌟 Contact
-Find us on:
-- X (Twitter): @andrzejka_dev
-- Email: a.andrzejewska96@gmail.com
+![image](https://github.com/user-attachments/assets/a5f74f77-5a14-42c9-bfac-54a9538d3417)
 
-🌟 License
-- Proprietary License - "©2025 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
+
+User-Friendly Interface: Clean, intuitive design that helps you focus on what matters - your training
+
+📱 Getting Started
+
+Download FlexChamp from the App Store or Google Play
+Create your profile and select your primary flexibility goals
+
+
+📧 Contact
+
+X (Twitter): @andrzejka_dev
+Email: a.andrzejewska96@gmail.com
+
+📄 License
+Proprietary License - "©2025 FlexChamp. All rights reserved. This software is proprietary and confidential. Unauthorized copying or distribution is prohibited."
