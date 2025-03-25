@@ -4,8 +4,12 @@ FlexChamp is a comprehensive flexibility training app designed for gymnasts of a
 
 "You're only as young as your spine is flexible." - Bob Harper
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif2.gif">
+</p>
+
 <div align="center">
-  <img src="https://raw.githubusercontent.com/andrzejka-dev/Affirmations/refs/heads/main/gif2.gif)" width="400" alt="FlexChamp Demo">
+  <img src="" width="400" alt="FlexChamp Demo">
 </div>
 
 🌟 Features
